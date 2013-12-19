@@ -9,6 +9,7 @@ class Cercle
 
 	private:
 		int rayon;
+		Point centre; 
 
 };
 

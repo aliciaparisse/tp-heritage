@@ -1,19 +1,27 @@
+//-----------------------------------
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
+//-----------------------------------
+
+
 #include "Point.h"
 
 
-Point(int unX, int unY)
+Point:: Point(int unX, int unY)
 	: x(unX), y(unY)
 {
 }
 
 
-virtual ~Point()
+Point::~Point()
 {
 }
 
 
-void deplacer(int dx, int dy)
+void Point::deplacer(int dx, int dy)
 {
+	this->x +=dx;
+	this->y +=dy;
 }
 
 

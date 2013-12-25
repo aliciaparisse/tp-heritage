@@ -1,30 +1,31 @@
 //-----------------------------------
 // TP C++ 3 : TP Héritage et Entrées/Sorties
 // Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
-// Cercle.h
+// Rectangle.h
 //-----------------------------------
 
-#ifndef CERCLE_H
-#define CERCLE_H
+#ifndef RECTANGLE_H
+#define RECTANGLE_H
 
 #include <iostream>
 #include "Point.h"
 using namespace std;
 
-class Cercle : public Forme 
+class Rectangle : public Forme 
 {
 	
 	public: 
-		Cercle(int x, int y,  int rayon);
-		virtual	~Cercle();
+		Rectangle(int x1, int y1,  int x2, int y2);
+		virtual	~Rectangle();
 		deplacer(int dx, int dy);		
 
 	private:
-		int rayon;
-		Point centre; 
+		Point point1;
+		Point point2;
+	  Point	point3;
+		Point point4;
 
 };
 
 #endif
-
 

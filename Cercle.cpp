@@ -5,23 +5,24 @@
 //-----------------------------------
 
 
-
+#include "Point.h"
 #include "Cercle.h"
 
 
 Cercle::Cercle (int unX, int unY, int unRayon)
-	: Point(unX, unY), rayon (unRayon)
+	: rayon (unRayon)
 {
-	// Je suis pas sure que la ligne au dessus fonctionne, sinon on peu faire comme ça :
-	// centre = new Point(unX, unY), à l'intérieur du bloc
+	centre = new Point(unX, unY);
 	// A FAIRE ! Trouver comment incrémenter la variable nbElem de la classe Forme !
+	// Essai : méthode nouvelleForme()
+	this->nouvelleForme();
 }	
 
 Cercle::~Cercle ()
 {
 }
 
-Cercle::deplacer(int dx, int dy)
+void Cercle::deplacer(int dx, int dy)
 {
 	this->centre.deplacer();
 }

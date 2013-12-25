@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include "Point.h"
+#include "Forme.h"
 using namespace std;
 
 class Rectangle : public Forme 
@@ -17,7 +18,7 @@ class Rectangle : public Forme
 	public: 
 		Rectangle(int x1, int y1,  int x2, int y2);
 		virtual	~Rectangle();
-		deplacer(int dx, int dy);		
+		void deplacer(int dx, int dy);		
 
 	private:
 		Point point1;

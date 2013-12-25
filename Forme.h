@@ -9,7 +9,7 @@
 #define FORME_H
 
 
-using namesapce std;
+using namespace std;
 
 class Forme :
 {
@@ -18,7 +18,8 @@ class Forme :
 		virtual ~Forme();
 		virtual void deplace(int dx, int dy)=0;
 	protected:
-		int nbElem;
+		void nouvelleForme();
+		static int nbElem;
 }
 
 #endif

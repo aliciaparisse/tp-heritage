@@ -8,6 +8,7 @@
 #ifndef POINT_H
 #define POINT_H
 
+
 using namespace std;
 
 class Point

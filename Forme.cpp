@@ -1,28 +1,20 @@
 //-----------------------------------
 // TP C++ 3 : TP Héritage et Entrées/Sorties
 // Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
-// Point.cpp
+// Forme.cpp
 //-----------------------------------
 
+#include "Forme.h"
 
-#include "Point.h"
-
-
-Point::Point(int unX, int unY)
-	: x(unX), y(unY)
+Forme::Forme()
 {
 }
 
-
-Point::~Point()
+Forme::~Forme()
 {
 }
 
-
-void Point::deplacer(int dx, int dy)
+void Forme::nouvelleForme()
 {
-	this->x +=dx;
-	this->y +=dy;
+	nbElem++;
 }
-
-

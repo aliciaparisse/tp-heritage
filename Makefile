@@ -19,8 +19,21 @@ heritage: $(OBJ)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 #ici, les différentes dépendances des .cpp par rapport aux différents .h, à relier avec les #include
+Cercle.o : Point.h Forme.h
+Rectangle.o : Point.h Forme.h
+CommandReader.o : CommandReader.h
+Point.o : Point.h
 
 #Framework de test à recréer
 test: $(EXEC)
 	@make -C Tests
-	
+
+#t: $(EXEC)
+	#@make -C Tests 
+
+clean:
+	@rm -rf *.o
+	#@make clean -C Test
+
+smrproper: clean
+	@rm -rf $(EXEC)

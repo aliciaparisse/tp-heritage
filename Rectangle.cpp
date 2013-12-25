@@ -14,13 +14,15 @@ Rectangle::Rectangle(int unX1, int unY1, int unX2, int unY2)
 	point2 = new Point(unX1, unY2);
 	point3 = new Point(unX2, unY2);
 	point4 = new Point(unX2, unY1);
+	//Essai d'incrémentation de nouvelle Forme
+	this->nouvelleForme();
 }
 
 Rectangle::~Rectangle()
 {
 }
 
-Rectangle::deplacer(int dx, int dy)
+void Rectangle::deplacer(int dx, int dy)
 {
 	this->point1.deplacer(dx,dy);
 	this->point2.deplacer(dx,dy);

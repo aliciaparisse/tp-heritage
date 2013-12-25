@@ -17,7 +17,7 @@ class Cercle : public Forme
 	public: 
 		Cercle(int x, int y,  int rayon);
 		virtual	~Cercle();
-		deplacer(int dx, int dy);		
+		void deplacer(int dx, int dy);		
 
 	private:
 		int rayon;

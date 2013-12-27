@@ -1,6 +1,7 @@
 #include "CommandReader.h"
 #include <string>
 #include <iostream>
+#include <deque>
 using namespace std;
 
 
@@ -14,9 +15,9 @@ CommandReader::~CommandReader ( )
 
 }
 
-void CommandReader::readCommand (const char cmd [])
+void CommandReader::readCommand (const char cmd []) //Décider si on met en paramètre un const char [] ou un istream (plus pratique le char
 {
-	typeCommand cmdName;
+	string cmdName;
 	bool testArgument(true);
 	string cmdstr(cmd);
 	getline (cmd, cmdName, ' ');
@@ -29,9 +30,9 @@ void CommandReader::readCommand (const char cmd [])
         if (testArgument)
         {
             defineCoordonnee (cmdstr,cmdName);
-            //ProblÃ¨me pour la rÃ©cupÃ©ration des coordonnÃ©es
-            //Sans doute : dÃ©claration des variables au prÃ©alable et remplacement des valeurs via cette fonction
-            //ProblÃ¨mes lorsque le nombre de coordonnÃ©es est inconnu
+            //Problème pour la récupération des coordonnées
+            //Sans doute : déclaration des variables au préalable et remplacement des valeurs via cette fonction
+            //Problèmes lorsque le nombre de coordonnées est inconnu
         }
     }
     else if (cmdName=='R')
@@ -101,19 +102,56 @@ void CommandReader::readCommand (const char cmd [])
 	}
 	else
     {
-        cerr<<"Instuction envoyÃ©e incorrecte";
-        //Pourra Ãªtre modifiÃ©e en une autre instruction en fonction du type de retour de la fonction.
+        cerr<<"Instuction envoyée incorrecte";
+        //Pourra être modifiée en une autre instruction en fonction du type de retour de la fonction.
 	}
 
 }
 
-void CommandReader::defineCoordonnee (string cmd, typeCommand & cmdName)
+void CommandReader::defineCoordonnee (string cmdLine)
 {
 
 }
 
-bool CommandReader::argumentNumber (string cmdLine)
+bool CommandReader::argumentNumber (string cmdLine, string cmdName)
+{
+    if (cmdName == 'C')
+    {
+        deque<string> argumentList (3, ' ');
+        int nbrArgument = 0;
+        string newArgument;
+        for (int i=0;i<sizeof(cmdLine);i++)
+        {
+            nbrArgument++;
+            getline(cmdLine.c_str(),newArgument, ' ');
+            argumentList[i] = newArgument;
+        }
+        if ((typeid(argumentList[1])==typeid(int)) && (typeid(argumentList[3])==typeid(int)))
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    if (cmdName=='R')
+}
+
+int CoordonneeNumber (string cmdLine)
 {
 
+}
+
+bool operator== (const string a, const char b [])
+{
+    bool egal (true);
+    int i=0;
+    while ((i<a.size()) && (b[i] != '\0') && egal)
+    {
+        egal = (a[i] == b[i]);
+        i++;
+    }
+    return egal;
 }
 

@@ -7,15 +7,8 @@
 #include "Rectangle.h"
 
 Rectangle::Rectangle(int unX1, int unY1, int unX2, int unY2)
+	: point1(unX1, unY1), point2(unX1, unY2), point3(unX2, unY2), point4(unX2, unY1) 
 {
-	// La non plus je suis pas sure de la meilleure manière de faire ça.
-	// Du coup, j'essaie comme ça, on verra si ça marche.
-	point1 = new Point(unX1, unY1);
-	point2 = new Point(unX1, unY2);
-	point3 = new Point(unX2, unY2);
-	point4 = new Point(unX2, unY1);
-	//Essai d'incrémentation de nouvelle Forme
-	this->nouvelleForme();
 }
 
 Rectangle::~Rectangle()

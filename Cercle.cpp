@@ -10,19 +10,11 @@
 
 
 Cercle::Cercle (int unX, int unY, int unRayon)
-	: rayon (unRayon)
-{
-	centre = new Point(unX, unY);
-	// A FAIRE ! Trouver comment incrémenter la variable nbElem de la classe Forme !
-	// Essai : méthode nouvelleForme()
-	this->nouvelleForme();
-}	
-
-Cercle::~Cercle ()
+	: rayon (unRayon),	centre(unX, unY)
 {
 }
 
 void Cercle::deplacer(int dx, int dy)
 {
-	this->centre.deplacer();
+	this->centre.deplacer(dx, dy);
 }

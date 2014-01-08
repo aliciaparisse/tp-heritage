@@ -1,34 +1,36 @@
 //-----------------------------------
 // TP C++ 3 : TP Héritage et Entrées/Sorties
 // Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
-// Polyligne.h
+// Modele.h
 //-----------------------------------
 
-#ifndef POLYLIGNE_H
-#define POLYLIGNE_H
+#ifndef MODELE_H
+#define MODELE_H
 
 #include "Forme.h"
+#include "Cercle.h"
+#include "Rectangle.h"
 #include "Ligne.h"
+#include "Polyligne.h"
+#include "Agregat.h"
 #include "Point.h"
 #include <list>
 #include <iostream>
 
-using namespace std;
+using namespace std; 
 
-class Polyligne
+class Modele
 {
 	private:
-		list <Point> points;
-
+		list <Forme> formes;
+		
 	public: 
-		Polyligne(list<Point> uneListe);
-		virtual ~Polyligne();
-		void deplacer(int dx, int dy);
-		void ajouter(Ligne nouvelleLigne); 
+		Modele(); 
+		virtual ~Modele();
+		ajouterForme(list <string> args); 
+		supprimerForme(Forme formeObsolete);
 
 
 };
-
-
 
 #endif

@@ -7,10 +7,8 @@
 #include "Polyligne.h"
 
 Polyligne::Polyligne(list<Point> uneListe)
+	: points(uneListe)
 {
-	//Je sais pas du tout si ça marche, c'est juste pour dire qu'il faudrait le déclarer comme ça
-	this->points = new list(uneListe);
-	this->nouvelleForme();
 }
 
 Polyligne:: ~Polyligne()

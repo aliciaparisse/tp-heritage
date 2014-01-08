@@ -25,5 +25,5 @@ class Ligne
 		deplacer(int dx, int dy);
 		
 
-}
+};
 #endif

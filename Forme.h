@@ -17,9 +17,6 @@ class Forme :
 		Forme ();
 		virtual ~Forme();
 		virtual void deplace(int dx, int dy)=0;
-	protected:
-		void nouvelleForme();
-		static int nbElem;
 }
 
 #endif

@@ -11,7 +11,7 @@
 #include "Point.h"
 using namespace std;
 
-class Cercle : public Forme 
+class Cercle: public Forme 
 {
 	
 	public: 

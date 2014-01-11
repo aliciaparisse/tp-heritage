@@ -19,10 +19,18 @@
 
 using namespace std; 
 
+struct formeEtId
+{
+	int id;
+	Forme laForme;
+}
+
 class Modele
 {
 	private:
-		list <Forme> formes;
+		list <formeEtId> formes;
+		map<int,string> noms;
+		int dernierId;
 		
 	public: 
 		Modele(); 

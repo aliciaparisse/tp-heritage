@@ -19,7 +19,7 @@ heritage: $(OBJ)
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 #ici, les différentes dépendances des .cpp par rapport aux différents .h, à relier avec les #include
-Cercle.o : Point.h Forme.h
+Cercle.o : Forme.h Point.h
 Rectangle.o : Point.h Forme.h
 CommandReader.o : CommandReader.h
 Point.o : Point.h

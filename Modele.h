@@ -15,6 +15,7 @@
 #include "Agregat.h"
 #include "Point.h"
 #include <list>
+#include <vector>
 #include <iostream>
 
 using namespace std; 
@@ -28,7 +29,7 @@ struct formeEtId
 class Modele
 {
 	private:
-		list <formeEtId> formes;
+		vector <formeEtId> formes;
 		map<int,string> noms;
 		int dernierId;
 		

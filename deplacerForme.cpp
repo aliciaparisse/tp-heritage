@@ -6,7 +6,7 @@
 
 #include "deplacerForme.h"
 
-deplacerForme::deplacerForme(Forme uneForme, Modele unModele, int unDepX, int unDepY)
+deplacerForme::deplacerForme(formeEtId uneForme, Modele unModele, int unDepX, int unDepY)
 	: formeTraitee(uneForme), modeleUtilise(unModele), depX(unDepX), depY(unDepY)
 {
 }
@@ -17,18 +17,10 @@ deplacerForme::deplacerForme()
 
 void deplacerForme::Do()
 {
-	for(vector<formesEtId>:: const_iterator it=formes.begin(); it!=formes.end(); ++it)
-	{
-		//Pointe sur la forme ou sur le pointeur de Forme ? 
-		it->laForme.deplacer(depX,depY);
-	}
+	modeleUtilise.deplacerForme((formeTraitee.id), depX, depY);
 }
 
 void deplacerForme::Undo()
 {
-	for(vector<formesEtId>:: const_iterator it=formes.begin(); it!=formes.end(); ++it)
-	{
-		//Pointe sur la forme ou sur le pointeur de Forme ? 
-		it->laForme.deplacer(-depX,-depY);
-	}
+	modeleUtilise.deplacerForme((formeTraitee.id), -depX, -depY);
 }

@@ -7,7 +7,7 @@
 #include "ajoutForme.h"
 
 
-ajoutForme::ajoutForme(Forme uneForme, Modele unModele)
+ajoutForme::ajoutForme(formeEtId uneForme, Modele unModele)
 	: formeTraitee(uneForme), modeleUtilise(unModele)
 {
 }
@@ -18,13 +18,11 @@ ajoutForme::~ajoutForme()
 
 void ajoutForme::Do()
 {
-	//Doit-on vérifier que le pointeur existe ? 
-	Forme* pointeur = &formeTraitee;
-	modeleUtilise.formes.push_back(pointeur);
+	formeEtId* pointeur = &formeTraitee;
 }
 void ajoutForme::Undo() 
 {
-	formes.erase(formeTraitee->id);
+	modeleUtilise.supprForme(formeTraitee->id);
 }
 
 

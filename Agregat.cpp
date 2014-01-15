@@ -7,7 +7,7 @@
 
 #include "Agregat.h"
 
-Agregat::Agregat (list <*Forme> uneListe)
+Agregat::Agregat (list <Forme*> uneListe)
 	: formesA(uneListe)
 {	 
 }
@@ -16,11 +16,11 @@ Agregat::~Agregat()
 {
 }
 
-Agregat::deplacer(int dx, int dy)
+void Agregat::deplacer(int dx, int dy)
 {
-	for (list<Forme*>::const_iterator it = this->formesA.begin(); it = this->formesA.end() ; ++it)
+	for (list<Forme*>::iterator it = formesA.begin(); it != formesA.end() ; ++it)
 	{
-		*it->deplacer(dx, dy);
+		(*it)->deplacer(dx, dy);
 	}
 
 

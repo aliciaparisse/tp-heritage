@@ -6,17 +6,17 @@
 
 #ifndef AJOUTFORME_H
 #define AJOUTFORME_H
+#include "Command.h"
 
 using namespace std; 
 
 class ajoutForme : public Command 
 {
 	public: 
-		ajoutForme(Forme uneForme, Modele unModele);
+		ajoutForme(formeEtId uneForme, Modele unModele);
 		~ajoutForme(); 
 		void Do();
 		void Undo(); 
-
 };
 
 

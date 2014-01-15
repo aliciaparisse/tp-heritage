@@ -6,6 +6,8 @@
 
 #ifndef DEPLACERFORME_H
 #define DEPLACERFORME_H
+#include "Command.h"
+
 
 using namespace std; 
 
@@ -15,7 +17,7 @@ class deplacerForme : public Command
 		int depX;
 		int depY;
 	public: 
-		deplacerForme(Forme uneForme, Modele unModele, int unDepX, int unDepY);
+		deplacerForme(formeEtId uneForme, Modele unModele, int unDepX, int unDepY);
 		~deplacerForme(); 
 		void Do();
 		void Undo(); 

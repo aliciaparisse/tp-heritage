@@ -16,8 +16,13 @@ Modele::~Modele()
 {
 }
 
-void Modele::ajouterForme(list <string> args)
+void Modele::ajoutForme(formeEtId* unPtForme)
 {
+	formes.push_back(unPtForme);
+}
+
+
+/*{
 	list<string>:: const_iterator it = args.begin();
 	
 	// On vérifie que le nom de la forme que l'on désire insérer n'existe pas déjà dans la map noms
@@ -206,8 +211,14 @@ void Modele::ajouterForme(list <string> args)
 	}
 	
 }
-
-void Modele::supprimerForme(Forme obsoleteForme)
+*/
+void Modele::supprimerForme(int idFormeSuppr)
 {
-	formes.remove(obsoleteForme);
+	formes.erase(idFormeSuppr);
+}
+
+void Modele::deplacerForme(int idFormeDep, int unDx, int unDy)
+{
+	//DEMANDER A AURELIEN PLUS TARD !!!!
+	(*formes.at(idFormeDep)).deplacer(unDx,unDy);
 }

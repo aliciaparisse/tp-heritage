@@ -36,8 +36,9 @@ class Modele
 	public: 
 		Modele(); 
 		virtual ~Modele();
-		ajouterForme(list <string> args); 
-		supprimerForme(Forme formeObsolete);
+		void ajoutForme(formeEtId* unPtForme); 
+		void supprForme(int idFormeSuppr);
+		void deplacerForme(int idFormeDep, int unDx, int unDy);
 
 
 };

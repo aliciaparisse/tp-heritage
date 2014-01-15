@@ -11,19 +11,16 @@ Polyligne::Polyligne(list<Point> uneListe)
 {
 }
 
-Polyligne:: ~Polyligne()
+Polyligne::~Polyligne()
 {
 }
 
 void Polyligne::deplacer(int dx, int dy)
 {
-	for (list<Point>::const_iterator it = points.begin(); it != point.end(); it++)
+	for (list<Point>::iterator it = points.begin(); it != points.end(); it++)
 	{
-		it.deplacer(dx, dy);
+		it->deplacer(dx, dy);
 	}
 }
 
-void ajouter(Ligne nouvelleLigne)
-{
-	this->points.push_back(nouvelleLigne);
-}	
+	

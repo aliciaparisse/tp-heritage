@@ -13,13 +13,13 @@ class Agregat : public Forme
 {
 
 	public: 
-		Agregat(list <Forme> uneListe);
+		Agregat(list <Forme*> uneListe);
 		virtual ~Agregat();
-		deplacer(int dx, int dy);
+		void deplacer(int dx, int dy);
 
 	private:
 		list <Forme*> formesA;
-}
+};
 
 
 

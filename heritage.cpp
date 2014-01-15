@@ -7,8 +7,11 @@
 
 #include <iostream>
 
+using namespace std;
+
 int main (int arc, const char **argv)
 {
+	cout<<"Saluuuut"<<endl;
 
 
 }

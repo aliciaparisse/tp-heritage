@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include "Point.h"
+#include "Forme.h"
 using namespace std;
 
 class Cercle: public Forme 

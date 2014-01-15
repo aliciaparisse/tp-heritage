@@ -8,7 +8,6 @@
 #define POLYLIGNE_H
 
 #include "Forme.h"
-#include "Ligne.h"
 #include "Point.h"
 #include <list>
 #include <iostream>
@@ -23,8 +22,7 @@ class Polyligne
 	public: 
 		Polyligne(list<Point> uneListe);
 		virtual ~Polyligne();
-		void deplacer(int dx, int dy);
-		void ajouter(Ligne nouvelleLigne); 
+		void deplacer(int dx, int dy); 
 
 
 };

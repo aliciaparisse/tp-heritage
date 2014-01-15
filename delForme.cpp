@@ -6,7 +6,7 @@
 #include "delForme.h"
 
 
-delForme::delForme(Forme uneForme, Modele unModele)
+delForme::delForme(formeEtId uneForme, Modele unModele)
 	: formeTraitee(uneForme), modeleUtilise(unModele)
 {
 }
@@ -17,14 +17,12 @@ delForme::~delForme()
 
 void delForme::Do()
 {
-	//est-ce que ça marche en accèdant à l'id de la forme ?
-	formes.erase(formeTraitee->id);
+	modeleUtilise.supprForme(formeTraitee->id);
 }
 void delForme::Undo() 
 {	
-	//Doit-on vérifier que le pointeur existe ? 
 	Forme* pointeur = &formeTraitee;
-	modeleUtilise.formes.push_back(pointeur);
+	modeleUtilise.ajoutForme(pointeur);
 }
 
 

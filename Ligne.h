@@ -22,7 +22,7 @@ class Ligne
 	public:
 		Ligne(int X1, int X2, int Y1, int Y2);
 		virtual ~Ligne();
-		deplacer(int dx, int dy);
+		void deplacer(int dx, int dy);
 		
 
 };

@@ -6,13 +6,13 @@
 
 #ifndef DELFORME_H
 #define DELFORME_H
-
+#include "Command.h"
 using namespace std; 
 
 class delForme : public Command 
 {
 	public: 
-		delForme(Forme uneForme, Modele unModele);
+		delForme(formeEtId uneForme, Modele unModele);
 		~delForme(); 
 		void Do();
 		void Undo(); 

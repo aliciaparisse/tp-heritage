@@ -3,7 +3,8 @@ CC=g++
 CFLAGS=-std=c++11
 LDFLAGS=
 EXEC=heritage
-SRC=Cercle.cpp Rectangle.cpp Point.cpp Polyligne.cpp Agregat.cpp
+SRC=Cercle.cpp Rectangle.cpp Point.cpp Polyligne.cpp Agregat.cpp heritage.cpp Ligne.cpp
+#CommandReader.cpp 
 OBJ=$(SRC:.cpp=.o)
 
 #ifeq ($(MODE), DEBUG)
@@ -23,6 +24,7 @@ Cercle.o : Forme.h Point.h
 Rectangle.o : Point.h Forme.h
 CommandReader.o : CommandReader.h
 Point.o : Point.h
+Ligne.o : Point.h
 
 #Framework de test à recréer
 test: $(EXEC)
@@ -35,5 +37,5 @@ clean:
 	@rm -rf *.o
 	#@make clean -C Test
 
-smrproper: clean
+mrproper: clean
 	@rm -rf $(EXEC)

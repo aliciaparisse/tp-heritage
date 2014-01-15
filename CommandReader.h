@@ -1,30 +1,33 @@
+//-----------------------------------
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
+// CommandReader.h
+//-----------------------------------
+
 #if ! defined (COMMANDREADER_H)
 #define COMMANDREADER_H
 
 #include <string>
+#include <list>
 using namespace std;
 
 class CommandReader
 {
 	public:
-		CommandReader ( );
+		CommandReader (const char unCmd []);
 		virtual ~CommandReader ( );
 
-		// fonction qui lit la ligne de commande rentrée en paramètre (const char []).
-		void readCommand (const char cmd []);
+		// fonction qui lit la ligne de commande rentrée en paramètre (const char [])
+		// et renvoie un booléen vrai si la commande est correcte (commande principale correcte et arguments associés corrects).
+		bool readCommand ();
 
-		// Fonction qui prend en paramètre la ligne de commande entrée et l'instruction géométrique.
-		// Si la ligne de commande est correcte, renvoie les coordonnées de la forme géométrique.
-		void defineCoordonnee (string cmdLine);
-
-		// Compte les arguments de la ligne de commande en paramètre et teste leur type.
-		// Si la ligne de commande renvoyée est correcte, renvoie true.
-		bool argumentNumber (string cmdLine, string cmdName);
+		// fonction enregistrant les arguments de la ligne de commande et les envoyant dans une liste.
+		list<string>  getInfos (string cmdLine, string cmdName,int& nbrArgument);
 
 		bool operator== (const string a, const char b []);
 
 	protected:
-
+		const char cmd [];
 
 };
 

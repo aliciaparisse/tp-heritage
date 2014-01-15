@@ -172,10 +172,10 @@ void Modele::ajouterForme(list <string> args)
 				bool trouve = false;
 				for (map <int,string>::const_iterator it2=noms.begin(); it2!=noms.end(); ++it2)
 				{
-					if (strcmp(*it, *it2->nom) == 0)//DEMANDER AURELIEN !!
+					if (strcmp(*it, *it2->second) == 0)//DEMANDER AURELIEN !!
 					{
 						//Ici je veux affecter un pointeur à la forme dont je teste le nom
-						Forme* pteur = *formes.at(it2)->laForme;
+						Forme* pteur = *formes.at(it2->first)->laForme;
 						laListe.push_back(pteur);
 						trouve = true;
 					}

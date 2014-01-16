@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP H�ritage et Entr�es/Sorties
-// R�alis� par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // CommandReader.cpp
 //-----------------------------------
 
@@ -22,12 +22,13 @@ CommandReader::~CommandReader ( )
 
 }
 
+// Fonction renvoyant un booléen vrai si la ligne de commande entrée dans le constructeur de la classe est correcte.
+// Renvoie également la liste des éléments composant la ligne de commande par référence sous forme d'une liste de strings.
 bool CommandReader::readCommand (list<string> & listArgument)
 {
 	bool testArgument(true);
 	int nbrArgument;
 	list<string> argumentListTest;
-	list<string> nomForme;
 
 	char* cmdNameTemp;
 	size_t tailleCmdName = cmd.find(' ',0);
@@ -64,10 +65,6 @@ bool CommandReader::readCommand (list<string> & listArgument)
                 listArgument = argumentListTest;
                 listArgument.push_front(cmdName);
                 testArgument = true;
-                list<string>::iterator temp;
-                temp = listArgument.begin();
-                temp++;
-                nomForme.push_back (*temp);
                 return testArgument;
             }
         }
@@ -107,10 +104,6 @@ bool CommandReader::readCommand (list<string> & listArgument)
                 listArgument = argumentListTest;
                 listArgument.push_front(cmdName);
                 testArgument = true;
-                list<string>::iterator temp;
-                temp = listArgument.begin();
-                temp++;
-                nomForme.push_back (*temp);
                 return testArgument;
             }
         }
@@ -143,15 +136,13 @@ bool CommandReader::readCommand (list<string> & listArgument)
                 return testArgument;
             }
         }
+		
+		// On vérifie si le nombre de coordonnées fournies est bien paire (un X associé à un Y)
         if (correctArgument%2 == 0)
         {
             listArgument = argumentListTest;
             listArgument.push_front(cmdName);
             testArgument = true;
-            list<string>::iterator temp;
-            temp = listArgument.begin();
-            temp++;
-            nomForme.push_back (*temp);
             return testArgument;
         }
         else
@@ -165,40 +156,14 @@ bool CommandReader::readCommand (list<string> & listArgument)
 	{
         cmd.erase(0, cmd.find(' ',0));
         argumentListTest=getInfos (cmd,nbrArgument);
-        if (nbrArgument >= 4)
+		
+		// Agrégat composé d'au minimum 2 formes, en plus du nom de l'agrégat, compter 3 arguments.
+        if (nbrArgument >= 3)
         {
-            list<string>::iterator it;
-            int i =0;
-            for (it=argumentListTest.begin()++;it!=argumentListTest.end();it++)
-            {
-                list<string>::iterator itNom;
-                itNom = nomForme.begin();
-                while (*it != *itNom || itNom != nomForme.end())
-                {
-                    itNom++;
-                };
-                if (itNom == nomForme.end())
-                {
-                    testArgument = false;
-                    cerr << endl << "R: ERR" << endl << "R: /#Parametres invalides" << endl;
-                    return testArgument;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            if (i==(nbrArgument-1))
-            {
-                listArgument = argumentListTest;
-                listArgument.push_front(cmdName);
-                testArgument = true;
-                list<string>::iterator temp;
-                temp = listArgument.begin();
-                temp++;
-                nomForme.push_back (*temp);
-                return testArgument;
-            }
+            listArgument = argumentListTest;
+            listArgument.push_front(cmdName);
+            testArgument = true;
+            return testArgument;            
         }
         else
         {
@@ -213,34 +178,10 @@ bool CommandReader::readCommand (list<string> & listArgument)
         argumentListTest=getInfos (cmd,nbrArgument);
         if (nbrArgument != 0)
         {
-            list<string>::iterator it;
-            int i =0;
-            for (it=argumentListTest.begin()++;it!=argumentListTest.end();it++)
-            {
-                list<string>::iterator itNom;
-                itNom = nomForme.begin();
-                while (*it != *itNom || itNom != nomForme.end())
-                {
-                    itNom++;
-                };
-                if (itNom == nomForme.end())
-                {
-                    testArgument = false;
-                    cerr << endl << "R: ERR" << endl << "R: /#Parametres invalides" << endl;
-                    return testArgument;
-                }
-                else
-                {
-                    i++;
-                }
-            }
-            if (i==nbrArgument)
-            {
-                listArgument = argumentListTest;
-                listArgument.push_front(cmdName);
-                testArgument = true;
-                return testArgument;
-            }
+            listArgument = argumentListTest;
+            listArgument.push_front(cmdName);
+            testArgument = true;
+            return testArgument;            
         }
         else
         {
@@ -255,31 +196,10 @@ bool CommandReader::readCommand (list<string> & listArgument)
         argumentListTest=getInfos (cmd,nbrArgument);
         if (nbrArgument == 3)
         {
-            list<string>::iterator it;
-            it = argumentListTest.begin();
-            list<string>::iterator itNom;
-            itNom = nomForme.begin();
-            while (*it != *itNom || itNom != nomForme.end())
-            {
-                itNom++;
-            };
-            if (itNom == nomForme.end())
-            {
-                testArgument = false;
-                cerr << endl << "R: ERR" << endl << "R: /#Parametres invalides" << endl;
-                return testArgument;
-            }
-            else
-            {
-
-            }
-            /*if (i==nbrArgument)
-            {
-                listArgument = argumentListTest;
-                listArgument.push_front(cmdName);
-                testArgument = true;
-                return testArgument;
-            }*/
+            listArgument = argumentListTest;
+            listArgument.push_front(cmdName);
+            testArgument = true;
+            return testArgument;
         }
         else
         {
@@ -306,16 +226,72 @@ bool CommandReader::readCommand (list<string> & listArgument)
             return testArgument;
         }
 	}
-	/*else if (cmdName=="LOAD")
+	else if (cmdName.compare("LOAD") == 0)
 	{
-    		cmdstr.erase(0, cmdstr.find(' '));
-		testArgument = argumentNumber (cmdstr);
+		cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument == 1)
+        {
+            // Seulement les fichiers .txt pourront être chargés.
+			list<string>::iterator it;
+			it = argumentListTest.begin();
+			string nomFichier (*it);
+			string extension;
+			extension = nomFichier.substr(nomFichier.size()-4,3);
+			if (extension.compare("txt") == 0)
+			{			
+				listArgument = argumentListTest;
+				listArgument.push_front(cmdName);
+				testArgument = true;
+				return testArgument;
+			}
+			else
+			{
+				testArgument = false;
+				cerr << endl << "R: ERR" << endl << "R: /#Parametre invalide, fichier.txt attendu" << endl;
+				return testArgument;
+			}
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
 	}
-	else if (cmdName=="SAVE")
+	else if (cmdName.compare("SAVE") == 0)
 	{
-    		cmdstr.erase(0, cmdstr.find(' '));
-		testArgument = argumentNumber (cmdstr);
-	}*/
+		cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument == 1)
+        {
+            // Seulement les fichiers .txt pourront être chargés.
+			list<string>::iterator it;
+			it = argumentListTest.begin();
+			string nomFichier (*it);
+			string extension;
+			extension = nomFichier.substr(nomFichier.size()-4,3);
+			if (extension.compare("txt") == 0)
+			{			
+				listArgument = argumentListTest;
+				listArgument.push_front(cmdName);
+				testArgument = true;
+				return testArgument;
+			}
+			else
+			{
+				testArgument = false;
+				cerr << endl << "R: ERR" << endl << "R: /#Parametre invalide, fichier.txt attendu" << endl;
+				return testArgument;
+			}
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
+	}
 	else
     {
         cerr << endl << "R: ERR" << endl << "R: /#Commande inconnue" << endl;
@@ -325,6 +301,8 @@ bool CommandReader::readCommand (list<string> & listArgument)
 
 }
 
+// Fonction décomposant les éléments du string cmdLine entrée en paramètre et les renvoyant dans une liste de string.
+// Compte également le nombre d'éléments composant cmdLine et le renvoie par référence.
 list<string> CommandReader::getInfos (string cmdLine, int& nbrArgument)
 {
 	list<string> argumentList;

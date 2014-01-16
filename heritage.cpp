@@ -6,6 +6,7 @@
 
 
 #include <iostream>
+#include <list>
 #include "CommandReader.h"
 
 int main (int arc, const char **argv)
@@ -35,6 +36,6 @@ int main (int arc, const char **argv)
 			continuer = false;
 		}
 	}
-
+	return 0;
 }
 

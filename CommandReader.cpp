@@ -8,10 +8,11 @@
 #include <string>
 #include <iostream>
 #include <list>
+#include "stdlib.h"
 using namespace std;
 
 
-CommandReader::CommandReader (char* commande [])
+CommandReader::CommandReader (string commande)
 {
     cmd = commande;
 }
@@ -21,96 +22,291 @@ CommandReader::~CommandReader ( )
 
 }
 
-bool CommandReader::readCommand ( )
+bool CommandReader::readCommand (list<string> & listArgument)
 {
 	bool testArgument(true);
-	string cmdName;
-	string cmdstr(cmd);
 	int nbrArgument;
 	list<string> argumentListTest;
-	getline (cmd, cmdName, ' ');
-	if (cmdName=='C')
-   	{
-        	cmdstr.erase(0, cmdstr.find(' '));
-        	argumentListTest=getInfos (cmdstr,nbrArgument);
-        	if (nbrArgument==4)
-            	{
-                	list<string>::iterator it
-			int = correctArgument(0);
-			for (it=argumentListTest.begin()+1;it=argumentListTest.end();it++)
-			{
-				testInt = strtol(it, NULL, 0);
-				if (testInt != 0L)
-				{
-					correctArgument++;
-				}
-				else
-				{
-					testArgument = false
-					cerr>> "Commande entree incorrecte, type d'arguments entre non valide.";
-					return testArgument;
-				}
+	list<string> nomForme;
 
-			}
-			if (correctArgument==3)
-			{
-				testArgument = true;
-				return testArgument;
-			}
-            	}
-            	else
-            	{
-                	testArgument = false;
-                	cerr>> "Commande entree incorrecte, nombre d'arguments entre invalides.";
-                	return testArgument;
-            	}
-    	}
-    	/*else if (cmdName=='R')
-    	{
-        	cmdstr.erase(0, cmdstr.find(' '));
-        	testArgument = argumentNumber (cmdstr);
-    	}
-    	else if (cmdName=='L')
+	char* cmdNameTemp;
+	size_t tailleCmdName = cmd.find(' ',0);
+	cmd.copy(cmdNameTemp,tailleCmdName,0);
+    string cmdName (cmdNameTemp);
+
+	if (cmdName.compare("C") == 0)
+   	{
+        cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument==4)
+        {
+            list<string>::iterator it;
+            int correctArgument(0);
+            for (it=argumentListTest.begin()++;it!=argumentListTest.end();it++)
+            {
+                int testInt(0);
+                string strTest (*it);
+                testInt = strtol(strTest.c_str(), NULL, 0);
+                if (testInt != 0L)
+                {
+                    correctArgument++;
+                }
+                else
+                {
+                    testArgument = false;
+                    cerr << endl << "R: ERR" << endl << "R: /#Parametres non valides" << endl;
+                    return testArgument;
+                }
+
+            }
+            if (correctArgument==3)
+            {
+                listArgument = argumentListTest;
+                listArgument.push_front(cmdName);
+                testArgument = true;
+                list<string>::iterator temp;
+                temp = listArgument.begin();
+                temp++;
+                nomForme.push_back (*temp);
+                return testArgument;
+            }
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
+    }
+    else if ((cmdName.compare("R") == 0) || (cmdName.compare("L") == 0))
+    {
+        cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument==5)
+        {
+            list<string>::iterator it;
+            int correctArgument(0);
+            for (it=argumentListTest.begin()++;it!=argumentListTest.end();it++)
+            {
+                int testInt(0);
+                string strTest (*it);
+                testInt = strtol(strTest.c_str(), NULL, 0);
+                if (testInt != 0L)
+                {
+                    correctArgument++;
+                }
+                else
+                {
+                    testArgument = false;
+                    cerr << endl << "R: ERR" << endl << "R: /#Parametres non valides" << endl;
+                    return testArgument;
+                }
+            }
+            if (correctArgument==3)
+            {
+                listArgument = argumentListTest;
+                listArgument.push_front(cmdName);
+                testArgument = true;
+                list<string>::iterator temp;
+                temp = listArgument.begin();
+                temp++;
+                nomForme.push_back (*temp);
+                return testArgument;
+            }
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
+    }
+	else if (cmdName.compare("PL") == 0)
 	{
-    		cmdstr.erase(0, cmdstr.find(' '));
-        	testArgument = argumentNumber (cmdstr);
+        cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        list<string>::iterator it;
+        int correctArgument(0);
+        for (it=argumentListTest.begin()++;it!=argumentListTest.end();it++)
+        {
+            int testInt(0);
+            string strTest (*it);
+            testInt = strtol(strTest.c_str(), NULL, 0);
+            if (testInt != 0L)
+            {
+                correctArgument++;
+            }
+            else
+            {
+                testArgument = false;
+                cerr << endl << "R: ERR" << endl << "R: /#Parametres non valides" << endl;
+                return testArgument;
+            }
+        }
+        if (correctArgument%2 == 0)
+        {
+            listArgument = argumentListTest;
+            listArgument.push_front(cmdName);
+            testArgument = true;
+            list<string>::iterator temp;
+            temp = listArgument.begin();
+            temp++;
+            nomForme.push_back (*temp);
+            return testArgument;
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
 	}
-	else if (cmdName=="PL")
+	else if (cmdName.compare("OA") == 0)
 	{
-        	cmdstr.erase(0, cmdstr.find(' '));
-        	testArgument = argumentNumber (cmdstr);
+        cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument >= 4)
+        {
+            list<string>::iterator it;
+            int i =0;
+            for (it=argumentListTest.begin()++;it!=argumentListTest.end();it++)
+            {
+                list<string>::iterator itNom;
+                itNom = nomForme.begin();
+                while (*it != *itNom || itNom != nomForme.end())
+                {
+                    itNom++;
+                };
+                if (itNom == nomForme.end())
+                {
+                    testArgument = false;
+                    cerr << endl << "R: ERR" << endl << "R: /#Parametres invalides" << endl;
+                    return testArgument;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            if (i==(nbrArgument-1))
+            {
+                listArgument = argumentListTest;
+                listArgument.push_front(cmdName);
+                testArgument = true;
+                list<string>::iterator temp;
+                temp = listArgument.begin();
+                temp++;
+                nomForme.push_back (*temp);
+                return testArgument;
+            }
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
 	}
-	else if (cmdName=="OA")
+	else if (cmdName.compare("DELETE") == 0)
 	{
-    		cmdstr.erase(0, cmdstr.find(' '));
-        	testArgument = argumentNumber (cmdstr);
+        cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument != 0)
+        {
+            list<string>::iterator it;
+            int i =0;
+            for (it=argumentListTest.begin()++;it!=argumentListTest.end();it++)
+            {
+                list<string>::iterator itNom;
+                itNom = nomForme.begin();
+                while (*it != *itNom || itNom != nomForme.end())
+                {
+                    itNom++;
+                };
+                if (itNom == nomForme.end())
+                {
+                    testArgument = false;
+                    cerr << endl << "R: ERR" << endl << "R: /#Parametres invalides" << endl;
+                    return testArgument;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            if (i==nbrArgument)
+            {
+                listArgument = argumentListTest;
+                listArgument.push_front(cmdName);
+                testArgument = true;
+                return testArgument;
+            }
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
 	}
-	else if (cmdName=="DELETE")
+	else if (cmdName.compare("MOVE")==0)
 	{
-    	cmdstr.erase(0, cmdstr.find(' '));
-        testArgument = argumentNumber (cmdstr);
+        cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument == 3)
+        {
+            list<string>::iterator it;
+            it = argumentListTest.begin();
+            list<string>::iterator itNom;
+            itNom = nomForme.begin();
+            while (*it != *itNom || itNom != nomForme.end())
+            {
+                itNom++;
+            };
+            if (itNom == nomForme.end())
+            {
+                testArgument = false;
+                cerr << endl << "R: ERR" << endl << "R: /#Parametres invalides" << endl;
+                return testArgument;
+            }
+            else
+            {
+
+            }
+            /*if (i==nbrArgument)
+            {
+                listArgument = argumentListTest;
+                listArgument.push_front(cmdName);
+                testArgument = true;
+                return testArgument;
+            }*/
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
 	}
-	else if (cmdName=="MOVE")
+	else if ((cmdName.compare("LIST") == 0) || (cmdName.compare("UNDO") == 0) || (cmdName.compare("REDO") == 0) || (cmdName.compare("CLEAR") == 0))
 	{
-	    cmdstr.erase(0, cmdstr.find(' '));
-        	testArgument = argumentNumber (cmdstr);
+        cmd.erase(0, cmd.find(' ',0));
+        argumentListTest=getInfos (cmd,nbrArgument);
+        if (nbrArgument == 0)
+        {
+            listArgument = argumentListTest;
+            listArgument.push_front(cmdName);
+            testArgument = true;
+            return testArgument;
+        }
+        else
+        {
+            testArgument = false;
+            cerr << endl << "R: ERR" << endl << "R: /#Nombre de parametre incorrect" << endl;
+            return testArgument;
+        }
 	}
-	else if (cmdName=="LIST")
-	{
-    		cmdstr.erase(0, cmdstr.find(' '));
-		testArgument = argumentNumber (cmdstr);
-	}
-	else if (cmdName=="UNDO")
-	{
-    		cmdstr.erase(0, cmdstr.find(' '));
-        	testArgument = argumentNumber (cmdstr);
-	}
-	else if (cmdName=="REDO")
-	{
-    		cmdstr.erase(0, cmdstr.find(' '));
-		testArgument = argumentNumber (cmdstr);
-	}
-	else if (cmdName=="LOAD")
+	/*else if (cmdName=="LOAD")
 	{
     		cmdstr.erase(0, cmdstr.find(' '));
 		testArgument = argumentNumber (cmdstr);
@@ -119,21 +315,13 @@ bool CommandReader::readCommand ( )
 	{
     		cmdstr.erase(0, cmdstr.find(' '));
 		testArgument = argumentNumber (cmdstr);
-	else if (cmdName=="CLEAR")
-	{
-		cmdstr.erase(0, cmdstr.find(' '));
-		testArgument = argumentNumber (cmdstr);
-	}
-	else if (cmdName=="EXIST")
-	{
-		cmdstr.erase(0, cmdstr.find(' '));
-		testArgument = argumentNumber (cmdstr);
-	}
-	else
-    	{
-        	cerr<<"Instuction envoyee incorrecte";
-        	//Pourra etre modifiee en une autre instruction en fonction du type de retour de la fonction.
 	}*/
+	else
+    {
+        cerr << endl << "R: ERR" << endl << "R: /#Commande inconnue" << endl;
+		testArgument = false;
+		return testArgument;
+	}
 
 }
 
@@ -141,25 +329,14 @@ list<string> CommandReader::getInfos (string cmdLine, int& nbrArgument)
 {
 	list<string> argumentList;
 	nbrArgument=0;
-	string newArgument;
     	for (int i=0;i<sizeof(cmdLine);i=cmdLine.find(' ',0))
     	{
         	nbrArgument++;
-        	getline(cmdLine.c_str(),newArgument, ' ');
+        	size_t tailleArgument = cmdLine.find(' ',i);
+        	char* newArgumentTemp;
+        	cmdLine.copy(newArgumentTemp,tailleArgument-i,i);
+            string newArgument (newArgumentTemp);
         	argumentList.push_back(newArgument);
     	}
 	return argumentList;
 }
-
-/*bool operator== (const string a, const char b [])
-{
-    bool egal (true);
-    int i=0;
-    while ((i<a.size()) && (b[i] != '\0') && egal)
-    {
-        egal = (a[i] == b[i]);
-        i++;
-    }
-    return egal;
-}
-*/

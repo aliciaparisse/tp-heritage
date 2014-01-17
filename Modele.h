@@ -17,6 +17,7 @@
 #include <list>
 #include <vector>
 #include <iostream>
+#include <map>
 
 using namespace std; 
 
@@ -24,12 +25,12 @@ struct formeEtId
 {
 	int id;
 	Forme laForme;
-}
+};
 
 class Modele
 {
 	private:
-		vector <formeEtId> formes;
+		vector <formeEtId*> formes;
 		map<int,string> noms;
 		int dernierId;
 		

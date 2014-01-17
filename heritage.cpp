@@ -11,8 +11,10 @@ using namespace std;
 
 int main (int arc, const char **argv)
 {
+	while(true)
+	{
 	cout<<"Saluuuut"<<endl;
-
+	}
 
 }
 

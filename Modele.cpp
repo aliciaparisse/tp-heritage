@@ -8,8 +8,8 @@
 #include <iterator>
 
 Modele::Modele()
+	: dernierId(0)
 {
-	dernierId=0;
 }
 
 Modele::~Modele()
@@ -212,13 +212,13 @@ void Modele::ajoutForme(formeEtId* unPtForme)
 	
 }
 */
-void Modele::supprimerForme(int idFormeSuppr)
+void Modele::supprForme(int idFormeSuppr)
 {
-	formes.erase(idFormeSuppr);
+	formes.erase(formes.begin()+idFormeSuppr);
 }
 
 void Modele::deplacerForme(int idFormeDep, int unDx, int unDy)
 {
 	//DEMANDER A AURELIEN PLUS TARD !!!!
-	(*formes.at(idFormeDep)).deplacer(unDx,unDy);
+	((formes.at(idFormeDep))->laForme).deplacer(unDx,unDy);
 }

@@ -10,6 +10,7 @@
 #include <vector>
 #include <list>
 #include <map>
+#include "Modele.h"
 #include "Forme.h"
 
 using namespace std;
@@ -22,8 +23,8 @@ class Command
 	public: 
 		Command(){}
 		~Command(){}
-		void Do()=0;
-		void Undo()=0;
+		void virtual Do()=0;
+		void virtual Undo()=0;
 };
 
 #endif

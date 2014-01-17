@@ -20,14 +20,16 @@ using namespace std;
 class Controleur
 {
 	private: 
-		vector<Command> commandes;
+		vector <Command> commandes;
+		Modele monModele;
+		int commandeCourante;
 
 	public: 
 		Controleur();
 		~Controleur();
-		void ajouterLaForme(Forme formeAjoutee);
-		void supprimerLaForme(Forme formeSupprimee); 
-		void deplacerLaForme(Forme formeDeplacee, int dx, int dy);
+		void ajouterLaForme(formeEtId formeAjoutee);
+		void supprimerLaForme(formeEtId formeSupprimee); 
+		void deplacerLaForme(formeEtId formeDeplacee, int dx, int dy);
 		void chargerUnFichier(string nomFichier); 	
 		void Undo();
 		void Redo(); 

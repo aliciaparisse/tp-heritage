@@ -6,15 +6,36 @@
 
 
 #include <iostream>
-
-using namespace std;
+#include <list>
+#include "CommandReader.h"
 
 int main (int arc, const char **argv)
 {
-	while(true)
+	bool continuer (true);
+	while (continuer)
 	{
-	cout<<"Saluuuut"<<endl;
+		string cmd;
+		cout << endl << "C: ";
+		cin >> cmd;
+		CommandReader* cmdRd = new CommandReader(cmd);
+		bool estValide (true);
+		if (cmd.compare("EXIT") != 0)
+		{
+			list<string> listArgument;
+			estValide = cmdRd->readCommand(listArgument);
+			if (estValide)
+			{
+				cout << endl << "R: OK" << endl;
+				// Executeur exct = new Executeur (cmd);
+				// Remplir la suite avec les méthodes de Executeur
+			}
+		}
+		else
+		{
+			cout << endl << "R: " << endl;
+			continuer = false;
+		}
 	}
-
+	return 0;
 }
 

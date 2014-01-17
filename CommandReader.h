@@ -14,20 +14,20 @@ using namespace std;
 class CommandReader
 {
 	public:
-		CommandReader (char* unCmd []);
+		CommandReader (string unCmd);
 		virtual ~CommandReader ( );
 
-		// fonction qui lit la ligne de commande rentrée en paramètre (const char [])
+		// fonction qui lit la ligne de commande rentrée en paramètre
 		// et renvoie un booléen vrai si la commande est correcte (commande principale correcte et arguments associés corrects).
-		bool readCommand ();
+		// Renvoie également en paramètre une liste de strings représentant les éléments de la ligne de commande.
+		bool readCommand (list<string> & ListArgument);
 
-		// fonction enregistrant les arguments de la ligne de commande et les envoyant dans une liste.
+		// fonction enregistrant les arguments de la ligne de commande en paramètre et les envoyant dans une liste.
+		// Renvoie également par référence le nombre d'argument composant la ligne de commande en paramètre.
 		list<string>  getInfos (string cmdLine,int& nbrArgument);
 
-		//bool operator== (const string a, const char b []);
-
 	protected:
-		char* cmd;
+		string cmd;
 };
 
 #endif

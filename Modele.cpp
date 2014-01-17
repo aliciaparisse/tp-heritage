@@ -219,6 +219,22 @@ void Modele::supprForme(int idFormeSuppr)
 
 void Modele::deplacerForme(int idFormeDep, int unDx, int unDy)
 {
-	//DEMANDER A AURELIEN PLUS TARD !!!!
 	((formes.at(idFormeDep))->laForme).deplacer(unDx,unDy);
+}
+
+
+bool nomExiste(string leNom)
+{
+		// On vérifie que le nom de la forme que l'on désire insérer n'existe pas déjà dans la map noms
+	bool existe = false;
+	for (map<int,string>::iterator it=noms.begin(); it != noms.end(); ++it)
+	{
+		// La partie it-> string est fausse, je dois trouver comment la modifier
+		if(strcmp(it->second, leNom)==0)
+		{
+			existe = true; 
+		}
+	}
+	return existe;
+
 }

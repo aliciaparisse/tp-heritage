@@ -40,7 +40,7 @@ class Modele
 		void ajoutForme(formeEtId* unPtForme); 
 		void supprForme(int idFormeSuppr);
 		void deplacerForme(int idFormeDep, int unDx, int unDy);
-
+		bool nomExiste(string leNom);
 
 };
 

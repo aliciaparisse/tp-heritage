@@ -26,13 +26,14 @@ class Controleur
 
 	public: 
 		Controleur();
-		~Controleur();
+		virtual ~Controleur();
 		void ajouterLaForme(formeEtId formeAjoutee);
 		void supprimerLaForme(formeEtId formeSupprimee); 
 		void deplacerLaForme(formeEtId formeDeplacee, int dx, int dy);
-		void chargerUnFichier(string nomFichier); 	
+		void chargerUnFichier(string nomFichier);	
 		void Undo();
 		void Redo(); 
+		bool nomExiste(string leNom);
 };
 
 #endif

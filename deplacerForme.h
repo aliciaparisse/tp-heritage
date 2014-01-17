@@ -13,6 +13,10 @@ using namespace std;
 
 class deplacerForme : public Command 
 {
+	protected:
+	 	Modele modeleUtilise;	
+		formeEtId formeTraitee;
+
 	private:
 		int depX;
 		int depY;

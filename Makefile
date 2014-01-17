@@ -3,8 +3,7 @@ CC=g++
 CFLAGS=-std=c++11
 LDFLAGS=
 EXEC=heritage
-SRC=Cercle.cpp Rectangle.cpp Point.cpp Polyligne.cpp Agregat.cpp heritage.cpp Ligne.cpp Modele.cpp Controleur.cpp ajoutForme.cpp delForme.cpp deplacerForme.cpp
-#CommandReader.cpp 
+SRC=Cercle.cpp Rectangle.cpp Point.cpp Polyligne.cpp Agregat.cpp heritage.cpp Ligne.cpp Modele.cpp ajoutForme.cpp delForme.cpp deplacerForme.cpp CommandReader.cpp Controleur.cpp
 OBJ=$(SRC:.cpp=.o)
 
 #ifeq ($(MODE), DEBUG)
@@ -29,7 +28,7 @@ Modele.o : Forme.h Cercle.h Rectangle.h Ligne.h Polyligne.h Agregat.h Point.h
 ajoutForme.o : Command.h
 delForme.o : Command.h
 deplacerForme.o : Command.h
-Controler.o : Command.h ajoutForme.h delForme.h deplacerForme.h Modele.h
+Controleur.o : Command.h ajoutForme.h delForme.h deplacerForme.h Modele.h
 
 #Framework de test à recréer
 test: $(EXEC)

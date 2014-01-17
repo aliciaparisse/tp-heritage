@@ -62,3 +62,8 @@ void Controleur::Redo()
 	(commandes.at(commandeCourante)).Do();
 	commandeCourante++;
 }
+
+bool nomExiste (string leNom)
+{
+	return monModele.nomExiste(leNom);
+}

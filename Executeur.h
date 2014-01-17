@@ -10,6 +10,7 @@
 #include <iostream>
 #include "Controleur.h"
 #include "CommandReader.h"
+#include  <list>
 
 using namespace std;
 
@@ -17,8 +18,12 @@ class Executeur
 {
 	private:
 		Controleur leControleur;
-		commandReader leLecteur;	
-
+		commandReader leLecteur;
+	
+	public:	
+		Executeur(Controleur unControleur, commandReader unLecteur);
+		virtual ~Executeur();
+		void executer(list<string> args);
 };
 
 #endif

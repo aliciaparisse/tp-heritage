@@ -11,7 +11,7 @@ deplacerForme::deplacerForme(formeEtId uneForme, Modele unModele, int unDepX, in
 {
 }
 
-deplacerForme::deplacerForme() 
+deplacerForme::~deplacerForme() 
 {
 }
 

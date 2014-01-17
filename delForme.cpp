@@ -17,11 +17,11 @@ delForme::~delForme()
 
 void delForme::Do()
 {
-	modeleUtilise.supprForme(formeTraitee->id);
+	modeleUtilise.supprForme(formeTraitee.id);
 }
 void delForme::Undo() 
 {	
-	Forme* pointeur = &formeTraitee;
+	formeEtId* pointeur = &formeTraitee;
 	modeleUtilise.ajoutForme(pointeur);
 }
 

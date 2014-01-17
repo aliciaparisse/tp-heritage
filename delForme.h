@@ -11,6 +11,10 @@ using namespace std;
 
 class delForme : public Command 
 {
+	protected:
+	 	Modele modeleUtilise;	
+		formeEtId formeTraitee;
+
 	public: 
 		delForme(formeEtId uneForme, Modele unModele);
 		~delForme(); 

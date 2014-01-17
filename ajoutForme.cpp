@@ -22,7 +22,7 @@ void ajoutForme::Do()
 }
 void ajoutForme::Undo() 
 {
-	modeleUtilise.supprForme(formeTraitee->id);
+	modeleUtilise.supprForme(formeTraitee.id);
 }
 
 

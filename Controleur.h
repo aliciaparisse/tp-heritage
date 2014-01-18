@@ -20,7 +20,7 @@ using namespace std;
 class Controleur
 {
 	private: 
-		vector <Command> commandes;
+		vector <Command*> commandes;
 		Modele monModele;
 		int commandeCourante;
 
@@ -33,7 +33,6 @@ class Controleur
 		void chargerUnFichier(string nomFichier);	
 		void Undo();
 		void Redo(); 
-		bool nomExiste(string leNom);
-};
 
+};
 #endif

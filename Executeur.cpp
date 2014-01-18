@@ -6,7 +6,7 @@
 
 #include "Executeur.h"
 
-Executeur(Controleur unControleur, commandReader unLecteur)
+Executeur(Controleur unControleur, CommandReader unLecteur)
 	: leControleur(unControleur), leLecteur(unLecteur)
 {
 }
@@ -17,29 +17,34 @@ Executeur::~Executeur()
 void executer(list<string> args)
 {
 	
-	/*list<string>:: const_iterator it = args.begin();
+	list<string>:: const_iterator it = args.begin()++;
 
-	bool existe = leControleur.nomExiste(it);
+	bool existe = nomExiste(*it);
+	it=args.begin();
+	string cmdName = *it;
 	
 	// CAS DU CERCLE
-	if (strcmp(*it, "C") == 0)
+	if(cmdName.compare("C") == 0)
 	{
 		// Si le nom n'existe pas déjà, on crée la forme en question
-		if (existe==false)
+		if (!existe)
 		{
-			it=args.begin();
-			string nom=++it;
 			++it;
-			int x=atoi(it);
+			string nom=*it;
 			++it;
-			int y=atoi(it);
+			string X = *it;
+			int x=atoi(X.c_str());
 			++it;
-			Cercle cercle = new Cercle(x,y,r);
+			string Y = *it;
+			int y=atoi(Y.c_str());
+			++it;
+			Forme cercle = new Cercle(x,y,r);
+
 			//On crée une formeEtId qu'on insère dans la liste
 			formeEtId nouvelleForme;
-			nouvelleForme.laForme=cercle;
-			nouvelleForme.id=dernierId;
-			formes.push_back(nouvelleForme);
+			nouvelleForme.laForme(&cercle);
+			nouvelleForme.id=leControleur.getDernierId;
+			leControleur.ajouteLaForme(nouvelleForme);
 			
 			//On insère le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
@@ -50,7 +55,7 @@ void executer(list<string> args)
 			cout << "Le nom de ce rond est déjà utilisé" << endl;
 		}
 	}
-	
+	/*
 	// CAS DU RECTANGLE OU DE LA LIGNE
 	if ((strcmp(*it, "R") == 0) || (strcmp(*it, "L")==0))
 	{
@@ -197,6 +202,24 @@ void executer(list<string> args)
 	
 }
 */
+}
 
+bool Executeur::nomExiste(string leNom)
+{
+		// On vérifie que le nom de la forme que l'on désire insérer n'existe pas déjà dans la map noms
+	bool existe = false;
+	for (map<int,string>::iterator it=noms.begin(); it != noms.end(); ++it)
+	{
+		// La partie it-> string est fausse, je dois trouver comment la modifier
+		string unNom = it->second;
+		if((leNom.compare(unNom)) == 0)
+		{
+			existe = true; 
+		}
+	}
+	return existe;
 
 }
+
+
+

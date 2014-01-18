@@ -25,7 +25,7 @@ int main (int arc, const char **argv)
 			estValide = cmdRd->readCommand(listArgument);
 			if (estValide)
 			{
-				cout << endl << "R: OK" << endl;
+				// :qcout << endl << "R: OK" << endl;
 				// Executeur exct = new Executeur (cmd);
 				// Remplir la suite avec les méthodes de Executeur
 			}

@@ -31,7 +31,6 @@ class Modele
 {
 	private:
 		vector <formeEtId*> formes;
-		map<int,string> noms;
 		int dernierId;
 		
 	public: 
@@ -41,7 +40,7 @@ class Modele
 		void supprForme(int idFormeSuppr);
 		void deplacerForme(int idFormeDep, int unDx, int unDy);
 		bool nomExiste(string leNom);
-
+		int getDernierId();
 };
 
 #endif

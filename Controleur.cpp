@@ -20,27 +20,27 @@ Controleur::~Controleur()
 //Le controleur ajoute La Forme formeAjoutee à son Modèle
 void Controleur::ajouterLaForme(formeEtId formeAjoutee)
 {
-	ajoutForme commandeAjout(formeAjoutee, monModele);
+	Command commandeAjout(formeAjoutee, monModele);
 	commandes.push_back(commandeAjout);
-	commandeAjout.Do();
+	commandeAjout->Do();
  	commandeCourante++;	
 }
 
 //Le controleur supprime la forme formeSupprimee de son Modèle
 void Controleur::supprimerLaForme(formeEtId formeSupprimee)
 {
-	delForme commandeSuppr (formeSupprimee, monModele);
+	Command commandeSuppr (formeSupprimee, monModele);
 	commandes.push_back(commandeSuppr);
-	commandeSuppr.Do();
+	commandeSuppr->Do();
 	commandeCourante++;
 }
 
 //Le controleur déplace la forme formeDeplacee dans son Modèle
 void Controleur::deplacerLaForme(formeEtId formeDeplacee, int dx, int dy)
 {
-	deplacerForme commandeDepl (formeDeplacee, monModele, dx, dy);
+	Command commandeDepl (formeDeplacee, monModele, dx, dy);
 	commandes.push_back(commandeDepl);
-	commandeDepl.Do();
+	commandeDepl->Do();
 	commandeCourante++;
 }
 
@@ -59,11 +59,12 @@ void Controleur::Undo()
 
 void Controleur::Redo()
 {
-	(commandes.at(commandeCourante)).Do();
 	commandeCourante++;
+	(commandes.at(commandeCourante)).Do();
 }
 
-bool nomExiste (string leNom)
+int Controleur::getDernierId()
 {
-	return monModele.nomExiste(leNom);
+	return Modele.getDernierId();
 }
+

@@ -17,7 +17,7 @@ class ajoutForme : public Command
 		formeEtId formeTraitee;
 
 	public: 
-		ajoutForme(formeEtId uneForme, Modele unModele);
+		ajoutForme(formeEtId &uneForme, Modele &unModele);
 		~ajoutForme(); 
 		void Do();
 		void Undo(); 

@@ -19,6 +19,7 @@ ajoutForme::~ajoutForme()
 void ajoutForme::Do()
 {
 	formeEtId* pointeur = &formeTraitee;
+	modeleUtilise.ajoutForme(pointeur);
 }
 void ajoutForme::Undo() 
 {

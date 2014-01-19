@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP HÃ©ritage et EntrÃ©es/Sorties
-// RÃ©alisÃ© par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // Controleur.cpp
 //-----------------------------------
 
@@ -18,7 +18,7 @@ Controleur::~Controleur()
 {
 }
 
-//Le controleur ajoute La Forme formeAjoutee Ã  son ModÃ¨le
+//Le controleur ajoute La Forme formeAjoutee à son Modèle
 void Controleur::ajouterLaForme(formeEtId& formeAjoutee)
 {
 	ajoutForme* ajout= new ajoutForme(formeAjoutee, monModele);
@@ -27,7 +27,7 @@ void Controleur::ajouterLaForme(formeEtId& formeAjoutee)
  	commandeCourante++;
 }
 
-//Le controleur supprime la forme formeSupprimee de son ModÃ¨le
+//Le controleur supprime la forme formeSupprimee de son Modèle
 void Controleur::supprimerLaForme(formeEtId& formeSupprimee)
 {
 	delForme* suppr = new delForme (formeSupprimee, monModele);
@@ -36,7 +36,7 @@ void Controleur::supprimerLaForme(formeEtId& formeSupprimee)
 	commandeCourante++;
 }
 
-//Le controleur dÃ©place la forme formeDeplacee dans son ModÃ¨le
+//Le controleur déplace la forme formeDeplacee dans son Modèle
 void Controleur::deplacerLaForme(formeEtId& formeDeplacee, int& dx, int& dy)
 {
 	deplacerForme* deplacer = new deplacerForme (formeDeplacee, monModele, dx, dy);

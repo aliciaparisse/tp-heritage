@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP HÃ©ritage et EntrÃ©es/Sorties
-// RÃ©alisÃ© par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // ajoutForme.h
 //-----------------------------------
 
@@ -8,19 +8,19 @@
 #define AJOUTFORME_H
 #include "Command.h"
 
-using namespace std; 
+using namespace std;
 
-class ajoutForme : public Command 
+class ajoutForme : public Command
 {
 	protected:
-	 	Modele modeleUtilise;	
+	 	Modele modeleUtilise;
 		formeEtId formeTraitee;
 
-	public: 
+	public:
 		ajoutForme(formeEtId &uneForme, Modele &unModele);
-		~ajoutForme(); 
+		~ajoutForme();
 		void Do();
-		void Undo(); 
+		void Undo();
 };
 
 

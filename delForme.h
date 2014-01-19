@@ -16,7 +16,7 @@ class delForme : public Command
 		formeEtId formeTraitee;
 
 	public: 
-		delForme(formeEtId uneForme, Modele unModele);
+		delForme(formeEtId &uneForme, Modele &unModele);
 		~delForme(); 
 		void Do();
 		void Undo(); 

@@ -222,24 +222,6 @@ void Modele::deplacerForme(int idFormeDep, int unDx, int unDy)
 	((formes.at(idFormeDep))->laForme).deplacer(unDx,unDy);
 }
 
-
-bool Modele::nomExiste(string leNom)
-{
-		// On vérifie que le nom de la forme que l'on désire insérer n'existe pas déjà dans la map noms
-	bool existe = false;
-	for (map<int,string>::iterator it=noms.begin(); it != noms.end(); ++it)
-	{
-		// La partie it-> string est fausse, je dois trouver comment la modifier
-		string unNom = it->second;
-		if((leNom.compare(unNom)) == 0)
-		{
-			existe = true; 
-		}
-	}
-	return existe;
-
-}
-
 int Modele::getDernierId()
 {
 	return dernierId;

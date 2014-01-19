@@ -6,7 +6,7 @@
 #include "delForme.h"
 
 
-delForme::delForme(formeEtId uneForme, Modele unModele)
+delForme::delForme(formeEtId &uneForme, Modele &unModele)
 	: formeTraitee(uneForme), modeleUtilise(unModele)
 {
 }

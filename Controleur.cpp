@@ -20,27 +20,27 @@ Controleur::~Controleur()
 //Le controleur ajoute La Forme formeAjoutee à son Modèle
 void Controleur::ajouterLaForme(formeEtId formeAjoutee)
 {
-	Command commandeAjout(formeAjoutee, monModele);
+	Command commandeAjout = new ajoutForme(formeAjoutee, monModele);
 	commandes.push_back(commandeAjout);
-	commandeAjout->Do();
+	commandeAjout.Do();
  	commandeCourante++;	
 }
 
 //Le controleur supprime la forme formeSupprimee de son Modèle
 void Controleur::supprimerLaForme(formeEtId formeSupprimee)
 {
-	Command commandeSuppr (formeSupprimee, monModele);
-	commandes.push_back(commandeSuppr);
-	commandeSuppr->Do();
+	Command commandeSuppr = new delForme(formeSupprimee, monModele);
+	commandes.push_back(*commandeSuppr);
+	(*commandeSuppr).Do();
 	commandeCourante++;
 }
 
 //Le controleur déplace la forme formeDeplacee dans son Modèle
 void Controleur::deplacerLaForme(formeEtId formeDeplacee, int dx, int dy)
 {
-	Command commandeDepl (formeDeplacee, monModele, dx, dy);
-	commandes.push_back(commandeDepl);
-	commandeDepl->Do();
+	Command commandeDepl = new deplacerForme(formeDeplacee, monModele, dx, dy);
+	commandes.push_back(*commandeDepl);
+	(*commandeDepl).Do();
 	commandeCourante++;
 }
 
@@ -53,18 +53,18 @@ void Controleur::chargerUnFichier(string nomFichier)
 
 void Controleur::Undo()
 {
-	(commandes.at(commandeCourante)).Undo();
+	(commandes.at(commandeCourante))->Undo();
 	commandeCourante--;
 }
 
 void Controleur::Redo()
 {
 	commandeCourante++;
-	(commandes.at(commandeCourante)).Do();
+	(commandes.at(commandeCourante))->Do();
 }
 
 int Controleur::getDernierId()
 {
-	return Modele.getDernierId();
+	return monModele.getDernierId();
 }
 

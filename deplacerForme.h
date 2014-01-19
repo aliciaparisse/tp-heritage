@@ -21,7 +21,7 @@ class deplacerForme : public Command
 		int depX;
 		int depY;
 	public: 
-		deplacerForme(formeEtId uneForme, Modele unModele, int unDepX, int unDepY);
+		deplacerForme(formeEtId &uneForme, Modele &unModele, int unDepX, int unDepY);
 		~deplacerForme(); 
 		void Do();
 		void Undo(); 

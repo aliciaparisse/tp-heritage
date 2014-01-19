@@ -33,6 +33,6 @@ class Controleur
 		void chargerUnFichier(string nomFichier);	
 		void Undo();
 		void Redo(); 
-
+		int getDernierId();
 };
 #endif

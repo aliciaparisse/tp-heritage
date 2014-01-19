@@ -7,7 +7,7 @@
 #include "ajoutForme.h"
 
 
-ajoutForme::ajoutForme(formeEtId uneForme, Modele unModele)
+ajoutForme::ajoutForme(formeEtId &uneForme, Modele &unModele)
 	: formeTraitee(uneForme), modeleUtilise(unModele)
 {
 }

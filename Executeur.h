@@ -18,11 +18,10 @@ class Executeur
 {
 	private:
 		Controleur leControleur;
-		CommandReader leLecteur;
 		map<int,string> noms;
-	
-	public:	
-		Executeur(Controleur unControleur, commandReader unLecteur);
+
+	public:
+		Executeur(Controleur unControleur);
 		virtual ~Executeur();
 		void executer(list<string> args);
 		bool nomExiste(string leNom);

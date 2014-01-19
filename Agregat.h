@@ -12,10 +12,10 @@
 class Agregat : public Forme
 {
 
-	public: 
+	public:
 		Agregat(list <Forme*> uneListe);
 		virtual ~Agregat();
-		void deplacer(int dx, int dy);
+		void deplacer(int& dx, int& dy);
 
 	private:
 		list <Forme*> formesA;

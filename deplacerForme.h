@@ -9,22 +9,22 @@
 #include "Command.h"
 
 
-using namespace std; 
+using namespace std;
 
-class deplacerForme : public Command 
+class deplacerForme : public Command
 {
 	protected:
-	 	Modele modeleUtilise;	
+	 	Modele modeleUtilise;
 		formeEtId formeTraitee;
 
 	private:
 		int depX;
 		int depY;
-	public: 
-		deplacerForme(formeEtId &uneForme, Modele &unModele, int unDepX, int unDepY);
-		~deplacerForme(); 
+	public:
+		deplacerForme(formeEtId& uneForme, Modele& unModele, int& unDepX, int& unDepY);
+		~deplacerForme();
 		void Do();
-		void Undo(); 
+		void Undo();
 
 };
 

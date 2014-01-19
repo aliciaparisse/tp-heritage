@@ -7,19 +7,19 @@
 #ifndef DELFORME_H
 #define DELFORME_H
 #include "Command.h"
-using namespace std; 
+using namespace std;
 
-class delForme : public Command 
+class delForme : public Command
 {
 	protected:
-	 	Modele modeleUtilise;	
+	 	Modele modeleUtilise;
 		formeEtId formeTraitee;
 
-	public: 
-		delForme(formeEtId &uneForme, Modele &unModele);
-		~delForme(); 
+	public:
+		delForme(formeEtId& uneForme, Modele& unModele);
+		~delForme();
 		void Do();
-		void Undo(); 
+		void Undo();
 
 };
 

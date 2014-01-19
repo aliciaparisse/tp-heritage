@@ -12,7 +12,7 @@ ajoutForme::ajoutForme(formeEtId &uneForme, Modele &unModele)
 {
 }
 
-ajoutForme::~ajoutForme() 
+ajoutForme::~ajoutForme()
 {
 }
 
@@ -21,7 +21,8 @@ void ajoutForme::Do()
 	formeEtId* pointeur = &formeTraitee;
 	modeleUtilise.ajoutForme(pointeur);
 }
-void ajoutForme::Undo() 
+
+void ajoutForme::Undo()
 {
 	modeleUtilise.supprForme(formeTraitee.id);
 }

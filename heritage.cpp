@@ -8,6 +8,9 @@
 #include <iostream>
 #include <list>
 #include "CommandReader.h"
+#include "Executeur.h"
+#include "Controleur.h"
+using namespace std;
 
 int main (int arc, const char **argv)
 {
@@ -25,9 +28,9 @@ int main (int arc, const char **argv)
 			estValide = cmdRd->readCommand(listArgument);
 			if (estValide)
 			{
-				// :qcout << endl << "R: OK" << endl;
-				// Executeur exct = new Executeur (cmd);
-				// Remplir la suite avec les méthodes de Executeur
+                Controleur unControleur;
+                Executeur* executeur = new Executeur(unControleur);
+                executeur->executer(listArgument);
 			}
 		}
 		else

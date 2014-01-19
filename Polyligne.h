@@ -14,15 +14,15 @@
 
 using namespace std;
 
-class Polyligne
+class Polyligne : public Forme
 {
 	private:
-		list <Point> points;
+		list<Point*> points;
 
-	public: 
-		Polyligne(list<Point> uneListe);
+	public:
+		Polyligne(list<Point*> uneListe);
 		virtual ~Polyligne();
-		void deplacer(int dx, int dy); 
+		void deplacer(int& dx, int& dy);
 
 
 };

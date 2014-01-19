@@ -5,13 +5,12 @@
 //-----------------------------------
 #include "delForme.h"
 
-
-delForme::delForme(formeEtId &uneForme, Modele &unModele)
+delForme::delForme(formeEtId& uneForme, Modele& unModele)
 	: formeTraitee(uneForme), modeleUtilise(unModele)
 {
 }
 
-delForme::~delForme() 
+delForme::~delForme()
 {
 }
 
@@ -19,8 +18,8 @@ void delForme::Do()
 {
 	modeleUtilise.supprForme(formeTraitee.id);
 }
-void delForme::Undo() 
-{	
+void delForme::Undo()
+{
 	formeEtId* pointeur = &formeTraitee;
 	modeleUtilise.ajoutForme(pointeur);
 }

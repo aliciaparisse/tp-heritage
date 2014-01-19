@@ -6,9 +6,10 @@
 
 #include "Controleur.h"
 
+int Controleur::commandeCourante = 0;
+
 //Contructeur de la classe
 Controleur::Controleur()
-	: commandeCourante(0)
 {
 }
 
@@ -18,38 +19,36 @@ Controleur::~Controleur()
 }
 
 //Le controleur ajoute La Forme formeAjoutee à son Modèle
-void Controleur::ajouterLaForme(formeEtId formeAjoutee)
+void Controleur::ajouterLaForme(formeEtId& formeAjoutee)
 {
-	Command commandeAjout = new ajoutForme(formeAjoutee, monModele);
-	commandes.push_back(commandeAjout);
-	commandeAjout.Do();
- 	commandeCourante++;	
+	ajoutForme* ajout= new ajoutForme(formeAjoutee, monModele);
+	commandes.push_back(ajout);
+	ajout->Do();
+ 	commandeCourante++;
 }
 
 //Le controleur supprime la forme formeSupprimee de son Modèle
-void Controleur::supprimerLaForme(formeEtId formeSupprimee)
+void Controleur::supprimerLaForme(formeEtId& formeSupprimee)
 {
-	Command commandeSuppr = new delForme(formeSupprimee, monModele);
-	commandes.push_back(*commandeSuppr);
-	(*commandeSuppr).Do();
+	delForme* suppr = new delForme (formeSupprimee, monModele);
+	commandes.push_back(suppr);
+	suppr->Do();
 	commandeCourante++;
 }
 
 //Le controleur déplace la forme formeDeplacee dans son Modèle
-void Controleur::deplacerLaForme(formeEtId formeDeplacee, int dx, int dy)
+void Controleur::deplacerLaForme(formeEtId& formeDeplacee, int& dx, int& dy)
 {
-	Command commandeDepl = new deplacerForme(formeDeplacee, monModele, dx, dy);
-	commandes.push_back(*commandeDepl);
-	(*commandeDepl).Do();
+	deplacerForme* deplacer = new deplacerForme (formeDeplacee, monModele, dx, dy);
+	commandes.push_back(deplacer);
+	deplacer->Do();
 	commandeCourante++;
 }
 
-
-void Controleur::chargerUnFichier(string nomFichier)
+void Controleur::chargerUnFichier(string& nomFichier)
 {
 
 }
-
 
 void Controleur::Undo()
 {

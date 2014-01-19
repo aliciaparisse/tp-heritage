@@ -256,21 +256,32 @@ bool CommandReader::readCommand (list<string> & listArgument)
 			list<string>::iterator it;
 			it = argumentListTest.begin();
 			string nomFichier (*it);
+			int tailleFichier = nomFichier.size();
 			string extension;
-			extension = nomFichier.substr(nomFichier.size()-4,3);
-			if (extension.compare("txt") == 0)
-			{
-				listArgument = argumentListTest;
-				listArgument.push_front(cmdName);
-				testArgument = true;
-				return testArgument;
-			}
-			else
-			{
-				testArgument = false;
-				cerr << "R: ERR" << endl << "R: #Parametre invalide, fichier.txt attendu" << endl << endl;
-				return testArgument;
-			}
+			// taille minimale du fichier : "a.txt" : 4 caractères pour l'extention + 1 caractère pour le nom.
+			if (tailleFichier >=5)
+            {
+                extension = nomFichier.substr(tailleFichier-3,3);
+                if (extension.compare("txt") == 0)
+                {
+                    listArgument = argumentListTest;
+                    listArgument.push_front(cmdName);
+                    testArgument = true;
+                    return testArgument;
+                }
+                else
+                {
+                    testArgument = false;
+                    cerr << "R: ERR" << endl << "R: #Parametre invalide, fichier.txt attendu" << endl << endl;
+                    return testArgument;
+                }
+            }
+            else
+            {
+                testArgument = false;
+                cerr << "R: ERR" << endl << "R: #Parametre invalide" << endl << endl;
+                return testArgument;
+            }
         }
         else
         {
@@ -287,21 +298,31 @@ bool CommandReader::readCommand (list<string> & listArgument)
 			list<string>::iterator it;
 			it = argumentListTest.begin();
 			string nomFichier (*it);
+			int tailleFichier = nomFichier.size();
 			string extension;
-			extension = nomFichier.substr(nomFichier.size()-4,3);
-			if (extension.compare("txt") == 0)
-			{
-				listArgument = argumentListTest;
-				listArgument.push_front(cmdName);
-				testArgument = true;
-				return testArgument;
-			}
-			else
-			{
-				testArgument = false;
-				cerr << "R: ERR" << endl << "R: #Parametre invalide, fichier.txt attendu" << endl << endl;
-				return testArgument;
-			}
+			if (tailleFichier >=5)
+            {
+                extension = nomFichier.substr(tailleFichier-3,3);
+                if (extension.compare("txt") == 0)
+                {
+                    listArgument = argumentListTest;
+                    listArgument.push_front(cmdName);
+                    testArgument = true;
+                    return testArgument;
+                }
+                else
+                {
+                    testArgument = false;
+                    cerr << "R: ERR" << endl << "R: #Parametre invalide, fichier.txt attendu" << endl << endl;
+                    return testArgument;
+                }
+            }
+            else
+            {
+                testArgument = false;
+                cerr << "R: ERR" << endl << "R: #Parametre invalide" << endl << endl;
+                return testArgument;
+            }
         }
         else
         {

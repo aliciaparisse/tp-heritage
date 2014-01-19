@@ -24,16 +24,12 @@ ajoutForme.o : Command.h
 delForme.o : Command.h
 deplacerForme.o : Command.h
 Controleur.o : Command.h ajoutForme.h delForme.h deplacerForme.h Modele.h
-<<<<<<< HEAD
-Executeur.o : Controleur.h CommandReader.h
-=======
 Executeur.o : Controleur.h
 heritage.o : CommandReader.h Executeur.h Controleur.h
 
 	
 %.o: %.cpp
 	$(CC) -o $@ -c $< $(CFLAGS)
->>>>>>> 2b17f5504d8c40b08321c5f7da483b4a881a6fb1
 
 #Framework de test à recréer
 test: $(EXEC)

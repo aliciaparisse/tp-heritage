@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP Héritage et Entrées/Sorties
-// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP HÃ©ritage et EntrÃ©es/Sorties
+// RÃ©alisÃ© par : B3222 - Jean MARCHAL et Alicia PARISSE
 // CommandReader.cpp
 //-----------------------------------
 
@@ -22,17 +22,17 @@ CommandReader::~CommandReader ( )
 
 }
 
-// Fonction renvoyant un booléen vrai si la ligne de commande entrée dans le constructeur de la classe est correcte.
-// Renvoie également la liste des éléments composant la ligne de commande par référence sous forme d'une liste de strings.
+// Fonction renvoyant un boolÃ©en vrai si la ligne de commande entrÃ©e dans le constructeur de la classe est correcte.
+// Renvoie Ã©galement la liste des Ã©lÃ©ments composant la ligne de commande par rÃ©fÃ©rence sous forme d'une liste de strings.
 bool CommandReader::readCommand (list<string> & listArgument)
 {
-	bool testArgument(true);
-	int nbrArgument (0);
-	list<string> argumentListTest;
+        bool testArgument(true);
+        int nbrArgument (0);
+        list<string> argumentListTest;
 
-	size_t tailleCmdName = cmd.find(' ',0);
-	string cmdName;
-	if (tailleCmdName != string::npos)
+        size_t tailleCmdName = cmd.find(' ',0);
+        string cmdName;
+        if (tailleCmdName != string::npos)
     {
         cmdName = cmd.substr (0,tailleCmdName);
         cmd.erase(0,tailleCmdName+1);
@@ -44,7 +44,7 @@ bool CommandReader::readCommand (list<string> & listArgument)
     }
 
     if (cmdName.compare("C") == 0)
-   	{
+           {
         if (nbrArgument==4)
         {
             list<string>::iterator it;
@@ -122,8 +122,8 @@ bool CommandReader::readCommand (list<string> & listArgument)
             return testArgument;
         }
     }
-	else if (cmdName.compare("PL") == 0)
-	{
+        else if (cmdName.compare("PL") == 0)
+        {
         list<string>::iterator it;
         int correctArgument(0);
         for (it=++argumentListTest.begin();it!=argumentListTest.end();it++)
@@ -142,7 +142,7 @@ bool CommandReader::readCommand (list<string> & listArgument)
             }
         }
 
-		// On vérifie si le nombre de coordonnées fournies est bien pair (un X associé à un Y)
+                // On vÃ©rifie si le nombre de coordonnÃ©es fournies est bien pair (un X associÃ© Ã  un Y)
         if (correctArgument%2 == 0)
         {
             listArgument = argumentListTest;
@@ -156,10 +156,10 @@ bool CommandReader::readCommand (list<string> & listArgument)
             cerr << "R: ERR" << endl << "R: #Nombre de parametre incorrect" << endl << endl;
             return testArgument;
         }
-	}
-	else if (cmdName.compare("OA") == 0)
-	{
-		// Agrégat composé d'au minimum 2 formes, en plus du nom de l'agrégat, compter 3 arguments.
+        }
+        else if (cmdName.compare("OA") == 0)
+        {
+                // AgrÃ©gat composÃ© d'au minimum 2 formes, en plus du nom de l'agrÃ©gat, compter 3 arguments.
         if (nbrArgument >= 3)
         {
             listArgument = argumentListTest;
@@ -173,9 +173,9 @@ bool CommandReader::readCommand (list<string> & listArgument)
             cerr << "R: ERR" << endl << "R: #Nombre de parametre insuffisant" << endl << endl;
             return testArgument;
         }
-	}
-	else if (cmdName.compare("DELETE") == 0)
-	{
+        }
+        else if (cmdName.compare("DELETE") == 0)
+        {
         if (nbrArgument != 0)
         {
             listArgument = argumentListTest;
@@ -189,9 +189,9 @@ bool CommandReader::readCommand (list<string> & listArgument)
             cerr << "R: ERR" << endl << "R: #Nombre de parametre incorrect" << endl << endl;
             return testArgument;
         }
-	}
-	else if (cmdName.compare("MOVE")==0)
-	{
+        }
+        else if (cmdName.compare("MOVE")==0)
+        {
         if (nbrArgument == 3)
         {
             list<string>::iterator it;
@@ -231,9 +231,9 @@ bool CommandReader::readCommand (list<string> & listArgument)
             cerr << "R: ERR" << endl << "R: #Nombre de parametre incorrect" << endl << endl;
             return testArgument;
         }
-	}
-	else if ((cmdName.compare("LIST") == 0) || (cmdName.compare("UNDO") == 0) || (cmdName.compare("REDO") == 0) || (cmdName.compare("CLEAR") == 0))
-	{
+        }
+        else if ((cmdName.compare("LIST") == 0) || (cmdName.compare("UNDO") == 0) || (cmdName.compare("REDO") == 0) || (cmdName.compare("CLEAR") == 0))
+        {
         if (nbrArgument == 0)
         {
             listArgument = argumentListTest;
@@ -247,19 +247,19 @@ bool CommandReader::readCommand (list<string> & listArgument)
             cerr << "R: ERR" << endl << "R: #Aucun parametre n'est attendu ici" << endl << endl;
             return testArgument;
         }
-	}
-	else if (cmdName.compare("LOAD") == 0)
-	{
+        }
+        else if (cmdName.compare("LOAD") == 0)
+        {
         if (nbrArgument == 1)
         {
-            // Seulement les fichiers .txt pourront être chargés.
-			list<string>::iterator it;
-			it = argumentListTest.begin();
-			string nomFichier (*it);
-			int tailleFichier = nomFichier.size();
-			string extension;
-			// taille minimale du fichier : "a.txt" : 4 caractères pour l'extention + 1 caractère pour le nom.
-			if (tailleFichier >=5)
+            // Seulement les fichiers .txt pourront Ãªtre chargÃ©s.
+                        list<string>::iterator it;
+                        it = argumentListTest.begin();
+                        string nomFichier (*it);
+                        int tailleFichier = nomFichier.size();
+                        string extension;
+                        // taille minimale du fichier : "a.txt" : 4 caractÃ¨res pour l'extention + 1 caractÃ¨re pour le nom.
+                        if (tailleFichier >=5)
             {
                 extension = nomFichier.substr(tailleFichier-3,3);
                 if (extension.compare("txt") == 0)
@@ -289,18 +289,18 @@ bool CommandReader::readCommand (list<string> & listArgument)
             cerr << "R: ERR" << endl << "R: #Nombre de parametre incorrect" << endl << endl;
             return testArgument;
         }
-	}
-	else if (cmdName.compare("SAVE") == 0)
-	{
+        }
+        else if (cmdName.compare("SAVE") == 0)
+        {
         if (nbrArgument == 1)
         {
-            // Seulement les fichiers .txt pourront être chargés.
-			list<string>::iterator it;
-			it = argumentListTest.begin();
-			string nomFichier (*it);
-			int tailleFichier = nomFichier.size();
-			string extension;
-			if (tailleFichier >=5)
+            // Seulement les fichiers .txt pourront Ãªtre chargÃ©s.
+                        list<string>::iterator it;
+                        it = argumentListTest.begin();
+                        string nomFichier (*it);
+                        int tailleFichier = nomFichier.size();
+                        string extension;
+                        if (tailleFichier >=5)
             {
                 extension = nomFichier.substr(tailleFichier-3,3);
                 if (extension.compare("txt") == 0)
@@ -330,24 +330,24 @@ bool CommandReader::readCommand (list<string> & listArgument)
             cerr << "R: ERR" << endl << "R: #Nombre de parametre incorrect" << endl << endl;
             return testArgument;
         }
-	}
-	else
+        }
+        else
     {
         cerr << "R: ERR" << endl << "R: #Commande inconnue" << endl << endl;
-		testArgument = false;
-		return testArgument;
-	}
+                testArgument = false;
+                return testArgument;
+        }
 
 }
 
-// Fonction décomposant les éléments du string cmdLine entrée en paramètre et les renvoyant dans une liste de string.
-// Compte également le nombre d'éléments composant cmdLine et le renvoie par référence.
+// Fonction dÃ©composant les Ã©lÃ©ments du string cmdLine entrÃ©e en paramÃ¨tre et les renvoyant dans une liste de string.
+// Compte Ã©galement le nombre d'Ã©lÃ©ments composant cmdLine et le renvoie par rÃ©fÃ©rence.
 list<string> CommandReader::getInfos (string cmdLine, int& nbrArgument)
 {
-	list<string> argumentList;
-	int tailleCmdLine = cmdLine.size();
-	int i (0);
-	bool finLigne (false);
+        list<string> argumentList;
+        int tailleCmdLine = cmdLine.size();
+        int i (0);
+        bool finLigne (false);
     while (!finLigne)
     {
         nbrArgument++;
@@ -366,7 +366,7 @@ list<string> CommandReader::getInfos (string cmdLine, int& nbrArgument)
             argumentList.push_back(newArgument);
         }
     }
-	return argumentList;
+        return argumentList;
 }
 
 bool CommandReader::testInteger (string& str)

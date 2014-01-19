@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP H√©ritage et Entr√©es/Sorties
-// R√©alis√© par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP HÈritage et EntrÈes/Sorties
+// RÈalisÈ par : B3222 - Jean MARCHAL et Alicia PARISSE
 // Executeur.cpp
 //-----------------------------------
 
@@ -29,7 +29,7 @@ void Executeur::executer(list<string> args)
 	// CAS DU CERCLE
 	if(cmdName.compare("C") == 0)
 	{
-		// Si le nom n'existe pas d√©j√†, on cr√©e la forme en question
+		// Si le nom n'existe pas dÈj‡, on crÈe la forme en question
 		if (!existe)
 		{
 			++it;
@@ -45,7 +45,7 @@ void Executeur::executer(list<string> args)
 			int r=atoi(R.c_str());
 			Forme* cercle = new Cercle(x,y,r);
 
-			//On cr√©e une formeEtId qu'on ins√®re dans la liste
+			//On crÈe une formeEtId qu'on insËre dans la liste
 			formeEtId nouvelleForme;
 			int dernierId;
 			dernierId = leControleur.getDernierId();
@@ -53,7 +53,7 @@ void Executeur::executer(list<string> args)
 			nouvelleForme.id=dernierId;
 			leControleur.ajouterLaForme(nouvelleForme);
 
-			//On ins√®re le nom dans la map
+			//On insËre le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
 			dernierId++;
 
@@ -68,7 +68,7 @@ void Executeur::executer(list<string> args)
 	// CAS DU RECTANGLE OU DE LA LIGNE
 	if ((cmdName.compare("R") == 0) || (cmdName.compare("L")==0))
 	{
-		// Si le nom n'existe pas d√©j√†, on cr√©e la forme en question
+		// Si le nom n'existe pas dÈj‡, on crÈe la forme en question
 		if (!existe)
 		{
 			++it;
@@ -86,7 +86,7 @@ void Executeur::executer(list<string> args)
 			string X4 = *it;
 			int y2=atoi(X4.c_str());
 
-			//On cr√©e une formeEtId
+			//On crÈe une formeEtId
 			formeEtId nouvelleForme;
 			int dernierId;
 			dernierId = leControleur.getDernierId();
@@ -104,10 +104,10 @@ void Executeur::executer(list<string> args)
                 nouvelleForme.id=dernierId;
 			}
 
-			//On ins√®re la nouvelle forme dans formes
+			//On insËre la nouvelle forme dans formes
 			leControleur.ajouterLaForme(nouvelleForme);
 
-			//On ins√®re le nom dans la map
+			//On insËre le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
 			cout << endl << "R: OK" << endl << "R: /#Nouvel objet: " << nom << endl;
 		}
@@ -121,7 +121,7 @@ void Executeur::executer(list<string> args)
 	// CAS DE LA POLYLIGNE
 	if (cmdName.compare("PL") == 0)
 	{
-		// Si le nom n'existe pas d√©j√†, on cr√©e la forme en question
+		// Si le nom n'existe pas dÈj‡, on crÈe la forme en question
 		if (!existe)
 		{
 			++it;
@@ -142,14 +142,14 @@ void Executeur::executer(list<string> args)
 			}
 
 			Polyligne* polyligne = new Polyligne(uneListe);
-			//On cr√©e une formeEtId qu'on ins√®re dans la liste
+			//On crÈe une formeEtId qu'on insËre dans la liste
 			formeEtId nouvelleForme;
 			int dernierId = leControleur.getDernierId();
 			nouvelleForme.laForme=polyligne;
 			nouvelleForme.id=dernierId;
 			leControleur.ajouterLaForme(nouvelleForme);
 
-			//On ins√®re le nom dans la map
+			//On insËre le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
 			cout << endl << "R: OK" << endl << "R: /#Nouvel objet: " << nom << endl;
 		}
@@ -162,14 +162,14 @@ void Executeur::executer(list<string> args)
 	// CAS DE L'AGREGAT
 	if (cmdName.compare("OA") == 0)
 	{
-		// Si le nom n'existe pas d√©j√†, on cr√©e la forme en question
+		// Si le nom n'existe pas dÈj‡, on crÈe la forme en question
 		if (!existe)
 		{
 			++it;
 			string nom=*it;
 			++it;
 
-			// On cr√©e une liste de pointeurs de formes qu'on remplit en parcourant args et en v√©rifiant que les formes existent bien
+			// On crÈe une liste de pointeurs de formes qu'on remplit en parcourant args et en vÈrifiant que les formes existent bien
 			list <Forme*> laListe;
 			while (it != args.end())
 			{
@@ -180,7 +180,7 @@ void Executeur::executer(list<string> args)
 					string nomUtilise = it2->second;
 					if (nomAnalyse.compare(nomUtilise) == 0)
 					{
-						/*//Ici je veux affecter un pointeur √† la forme dont je teste le nom
+						/*//Ici je veux affecter un pointeur ‡ la forme dont je teste le nom
 						Forme* pteur = *formes.at(it2->first)->laForme;
 						laListe.push_back(pteur);*/
 						nomExistant = true;
@@ -199,14 +199,14 @@ void Executeur::executer(list<string> args)
 
 			Agregat* agregat = new Agregat(laListe);
 
-			//On cr√©e une formeEtId qu'on ins√®re dans la liste
+			//On crÈe une formeEtId qu'on insËre dans la liste
 			formeEtId nouvelleForme;
 			int dernierId = leControleur.getDernierId();
 			nouvelleForme.laForme=agregat;
 			nouvelleForme.id=dernierId;
 			leControleur.ajouterLaForme(nouvelleForme);
 
-			//On ins√®re le nom dans la map
+			//On insËre le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
 			cout << endl << "R: OK" << endl << "R: /#Nouvel objet: " << nom << endl;
 		}
@@ -220,7 +220,7 @@ void Executeur::executer(list<string> args)
 
 bool Executeur::nomExiste(string leNom)
 {
-		// On v√©rifie que le nom de la forme que l'on d√©sire ins√©rer n'existe pas d√©j√† dans la map noms
+		// On vÈrifie que le nom de la forme que l'on dÈsire insÈrer n'existe pas dÈj‡ dans la map noms
 	bool existe = false;
 	for (map<int,string>::iterator it=noms.begin(); it != noms.end(); ++it)
 	{

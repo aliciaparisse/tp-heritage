@@ -26,6 +26,9 @@ class CommandReader
 		// Renvoie également par référence le nombre d'argument composant la ligne de commande en paramètre.
 		list<string>  getInfos (string cmdLine,int& nbrArgument);
 
+		// fonction prenant en paramètre un string en référence et renvoie un booléen vrai si ce string contient un int.
+		bool testInteger (string& str);
+
 	protected:
 		string cmd;
 };

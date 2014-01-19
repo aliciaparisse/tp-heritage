@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP HÃ©ritage et EntrÃ©es/Sorties
-// RÃ©alisÃ© par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // Modele.h
 //-----------------------------------
 
@@ -14,10 +14,8 @@
 #include "Polyligne.h"
 #include "Agregat.h"
 #include "Point.h"
-#include <list>
 #include <vector>
 #include <iostream>
-#include <map>
 
 using namespace std;
 

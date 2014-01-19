@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 //----------------------------------
 // TP C++ 3 : TP HÃ©ritage et EntrÃ©es/Sorties
 // RÃ©alisÃ© par : B3222 - Jean MARCHAL et Alicia PARISSE
+=======
+//-----------------------------------
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
+>>>>>>> 2b17f5504d8c40b08321c5f7da483b4a881a6fb1
 // Executeur.h
 //-----------------------------------
 
@@ -9,7 +15,6 @@
 
 #include <iostream>
 #include "Controleur.h"
-#include "CommandReader.h"
 #include  <list>
 
 using namespace std;

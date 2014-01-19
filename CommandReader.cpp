@@ -12,9 +12,9 @@
 using namespace std;
 
 
-CommandReader::CommandReader (string commande)
+CommandReader::CommandReader (string commande) : cmd(commande)
 {
-    cmd = commande;
+	
 }
 
 CommandReader::~CommandReader ( )

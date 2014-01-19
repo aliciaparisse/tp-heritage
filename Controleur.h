@@ -15,24 +15,25 @@
 #include  <vector>
 
 
-using namespace std; 
+using namespace std;
 
 class Controleur
 {
-	private: 
+	private:
 		vector <Command*> commandes;
 		Modele monModele;
-		int commandeCourante;
+		static int commandeCourante;
 
-	public: 
+	public:
 		Controleur();
 		virtual ~Controleur();
-		void ajouterLaForme(formeEtId formeAjoutee);
-		void supprimerLaForme(formeEtId formeSupprimee); 
-		void deplacerLaForme(formeEtId formeDeplacee, int dx, int dy);
-		void chargerUnFichier(string nomFichier);	
+		void ajouterLaForme(formeEtId& formeAjoutee);
+		void supprimerLaForme(formeEtId& formeSupprimee);
+		void deplacerLaForme(formeEtId& formeDeplacee, int& dx, int& dy);
+		void chargerUnFichier(string& nomFichier);
 		void Undo();
-		void Redo(); 
+		void Redo();
+		int getDernierId() ;
 
 };
 #endif

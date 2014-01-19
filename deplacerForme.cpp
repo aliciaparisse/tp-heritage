@@ -6,12 +6,12 @@
 
 #include "deplacerForme.h"
 
-deplacerForme::deplacerForme(formeEtId uneForme, Modele unModele, int unDepX, int unDepY)
+deplacerForme::deplacerForme(formeEtId& uneForme, Modele& unModele, int& unDepX, int& unDepY)
 	: formeTraitee(uneForme), modeleUtilise(unModele), depX(unDepX), depY(unDepY)
 {
 }
 
-deplacerForme::~deplacerForme() 
+deplacerForme::~deplacerForme()
 {
 }
 

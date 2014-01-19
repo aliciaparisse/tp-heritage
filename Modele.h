@@ -19,12 +19,12 @@
 #include <iostream>
 #include <map>
 
-using namespace std; 
+using namespace std;
 
 struct formeEtId
 {
 	int id;
-	Forme laForme;
+	Forme* laForme;
 };
 
 class Modele
@@ -32,14 +32,13 @@ class Modele
 	private:
 		vector <formeEtId*> formes;
 		int dernierId;
-		
-	public: 
-		Modele(); 
+
+	public:
+		Modele();
 		virtual ~Modele();
-		void ajoutForme(formeEtId* unPtForme); 
+		void ajoutForme(formeEtId* unPtForme);
 		void supprForme(int idFormeSuppr);
 		void deplacerForme(int idFormeDep, int unDx, int unDy);
-		bool nomExiste(string leNom);
 		int getDernierId();
 };
 

@@ -9,14 +9,14 @@
 
 Agregat::Agregat (list <Forme*> uneListe)
 	: formesA(uneListe)
-{	 
+{
 }
 
 Agregat::~Agregat()
 {
 }
 
-void Agregat::deplacer(int dx, int dy)
+void Agregat::deplacer(int& dx, int& dy)
 {
 	for (list<Forme*>::iterator it = formesA.begin(); it != formesA.end() ; ++it)
 	{

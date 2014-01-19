@@ -6,7 +6,7 @@
 
 #include "Polyligne.h"
 
-Polyligne::Polyligne(list<Point> uneListe)
+Polyligne::Polyligne(list<Point*> uneListe)
 	: points(uneListe)
 {
 }
@@ -15,12 +15,13 @@ Polyligne::~Polyligne()
 {
 }
 
-void Polyligne::deplacer(int dx, int dy)
+void Polyligne::deplacer(int& dx, int& dy)
 {
-	for (list<Point>::iterator it = points.begin(); it != points.end(); it++)
+	for (list<Point*>::iterator it = points.begin(); it != points.end(); it++)
 	{
-		it->deplacer(dx, dy);
+		Point* point = *it;
+		point->deplacer(dx,dy);
 	}
 }
 
-	
+

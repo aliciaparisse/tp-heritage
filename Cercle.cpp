@@ -9,7 +9,7 @@
 #include "Cercle.h"
 
 
-Cercle::Cercle (int unX, int unY, int unRayon)
+Cercle::Cercle (int& unX, int& unY, int& unRayon)
 	: rayon (unRayon),	centre(unX, unY)
 {
 }
@@ -18,7 +18,7 @@ Cercle::~Cercle()
 {
 }
 
-void Cercle::deplacer(int dx, int dy)
+void Cercle::deplacer(int& dx, int& dy)
 {
 	this->centre.deplacer(dx, dy);
 }

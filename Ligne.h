@@ -8,22 +8,23 @@
 #define LIGNE_H
 
 #include <iostream>
+#include "Forme.h"
 #include "Point.h"
 
 using namespace std;
 
-class Ligne 
+class Ligne : public Forme
 {
 
-	private: 
+	private:
 		Point point1;
 		Point point2;
 
 	public:
-		Ligne(int X1, int X2, int Y1, int Y2);
+		Ligne(int& X1, int& X2, int& Y1, int& Y2);
 		virtual ~Ligne();
-		void deplacer(int dx, int dy);
-		
+		void deplacer(int& dx, int& dy);
+
 
 };
 #endif

@@ -12,17 +12,17 @@
 #include "Forme.h"
 using namespace std;
 
-class Cercle: public Forme 
+class Cercle: public Forme
 {
-	
-	public: 
-		Cercle(int x, int y,  int rayon);
+
+	public:
+		Cercle(int& x, int& y,  int& rayon);
 		virtual	~Cercle();
-		void deplacer(int dx, int dy);		
+		void deplacer(int& dx, int& dy);
 
 	private:
 		int rayon;
-		Point centre; 
+		Point centre;
 
 };
 

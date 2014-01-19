@@ -14,11 +14,11 @@ using namespace std;
 class Point
 {
 
-	public: 
-		Point(int unX, int unY);
+	public:
+		Point(int& unX, int& unY);
 		virtual ~Point();
 
-		void deplacer(int dx, int dy);
+		void deplacer(int& dx, int& dy);
 
 
 	private:

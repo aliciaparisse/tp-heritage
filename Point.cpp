@@ -8,18 +8,16 @@
 #include "Point.h"
 
 
-Point::Point(int unX, int unY)
+Point::Point(int& unX, int& unY)
 	: x(unX), y(unY)
 {
 }
-
 
 Point::~Point()
 {
 }
 
-
-void Point::deplacer(int dx, int dy)
+void Point::deplacer(int& dx, int& dy)
 {
 	this->x +=dx;
 	this->y +=dy;

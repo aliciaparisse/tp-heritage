@@ -13,8 +13,8 @@ class Forme
 {
 	public:
 		Forme (){}
-    virtual ~Forme(){}
-		virtual void deplacer(int dx, int dy){}
+        virtual ~Forme(){}
+        virtual void deplacer(int dx, int dy){}
 };
 
 #endif

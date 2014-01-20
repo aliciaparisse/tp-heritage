@@ -12,7 +12,8 @@
 using namespace std;
 
 
-CommandReader::CommandReader (string commande) : cmd(commande)
+CommandReader::CommandReader (string commande)
+	: cmd(commande)
 {
 
 }
@@ -32,6 +33,7 @@ bool CommandReader::readCommand (list<string> & listArgument)
 
         size_t tailleCmdName = cmd.find(' ',0);
         string cmdName;
+
         if (tailleCmdName != string::npos)
     {
         cmdName = cmd.substr (0,tailleCmdName);
@@ -44,7 +46,7 @@ bool CommandReader::readCommand (list<string> & listArgument)
     }
 
     if (cmdName.compare("C") == 0)
-           {
+    {
         if (nbrArgument==4)
         {
             list<string>::iterator it;
@@ -374,19 +376,16 @@ bool CommandReader::testInteger (string& str)
     int strInt = strtol(str.c_str(),NULL,10);
     if (strInt != 0)
     {
-        cout << "1" << endl;
         return true;
     }
     else
     {
         if (str.compare("0") == 0)
         {
-            cout << "2" << endl;
             return true;
         }
         else
         {
-            cout << "3" << endl;
             return false;
         }
     }

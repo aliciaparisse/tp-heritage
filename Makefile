@@ -4,10 +4,12 @@ CFLAGS=-std=c++11
 LDFLAGS=
 EXEC=heritage
 SRC=Cercle.cpp Rectangle.cpp Point.cpp Polyligne.cpp Agregat.cpp heritage.cpp Ligne.cpp Modele.cpp ajoutForme.cpp delForme.cpp deplacerForme.cpp CommandReader.cpp Controleur.cpp Executeur.cpp
-OBJ=$(SRC:.cpp=.o)
+INT=$(SRC:.cpp=.h)
+OBJ=$(SRC:.cpp=.o) heritage.o
+
 
 #ifeq ($(MODE), DEBUG)
-	#CFLAGS:=$(CFLAGS) -g
+        #CFLAGS:=$(CFLAGS) -g
 #endif
 
 all: $(EXEC)

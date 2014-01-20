@@ -17,9 +17,9 @@ int main (int arc, const char **argv)
 	bool continuer (true);
 	while (continuer)
 	{
-		string cmd;
+		string cmd;  
 		cout << endl << "C: ";
-		cin >> cmd;
+		getline(cin,cmd);
 		CommandReader* cmdRd = new CommandReader(cmd);
 		bool estValide (true);
 		if (cmd.compare("EXIT") != 0)

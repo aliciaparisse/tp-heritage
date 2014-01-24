@@ -1,4 +1,4 @@
-//-----------------------------------
+//---------------------------------
 // TP C++ 3 : TP Héritage et Entrées/Sorties
 // Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // heritage.cpp
@@ -15,9 +15,11 @@ using namespace std;
 int main (int arc, const char **argv)
 {
 	bool continuer (true);
+    Controleur unControleur;
+    Executeur* executeur = new Executeur(unControleur);
 	while (continuer)
 	{
-		string cmd;  
+		string cmd;
 		cout << endl << "C: ";
 		getline(cin,cmd);
 		CommandReader* cmdRd = new CommandReader(cmd);
@@ -28,8 +30,6 @@ int main (int arc, const char **argv)
 			estValide = cmdRd->readCommand(listArgument);
 			if (estValide)
 			{
-                Controleur unControleur;
-                Executeur* executeur = new Executeur(unControleur);
                 executeur->executer(listArgument);
 			}
 		}
@@ -38,7 +38,9 @@ int main (int arc, const char **argv)
 			cout << endl << "R: " << endl;
 			continuer = false;
 		}
+		delete cmdRd;
 	}
+	delete executeur;
 	return 0;
 }
 

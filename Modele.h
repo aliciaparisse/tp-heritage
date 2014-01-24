@@ -29,7 +29,7 @@ class Modele
 {
 	private:
 		vector <formeEtId*> formes;
-		int dernierId;
+		static int dernierId;
 
 	public:
 		Modele();

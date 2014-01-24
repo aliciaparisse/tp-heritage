@@ -17,18 +17,19 @@ Executeur::Executeur(Controleur unControleur) : leControleur(unControleur)
 Executeur::~Executeur()
 {
 }
-void Executeur::executer(list<string> args)
+void Executeur::executer(list<string>& args)
 {
 
-	list<string>:: const_iterator it = args.begin()++;
+	list<string>:: const_iterator it = ++args.begin();
 
-	bool existe = nomExiste(*it);
+	int idNomForme (0);
+	bool existe = nomExiste(*it,idNomForme);
 	it=args.begin();
 	string cmdName = *it;
 
 	// CAS DU CERCLE
 	if(cmdName.compare("C") == 0)
-	{	
+	{
 		// Si le nom n'existe pas déjà, on crée la forme en question
 		if (!existe)
 		{
@@ -47,7 +48,7 @@ void Executeur::executer(list<string> args)
 
 			//On crée une formeEtId qu'on insère dans la liste
 			formeEtId nouvelleForme;
-			int dernierId;
+			int dernierId (0);
 			dernierId = leControleur.getDernierId();
 			nouvelleForme.laForme= cercle;
 			nouvelleForme.id=dernierId;
@@ -55,13 +56,11 @@ void Executeur::executer(list<string> args)
 
 			//On insère le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
-			dernierId++;
-
-			cout << endl << "R: OK" << endl << "R: /#Nouvel objet: " << nom << endl;
+			cout << "R: OK" << endl << "R: #Nouvel objet: " << nom << endl << endl;
 		}
 		else
 		{
-			cerr << endl << "R: ERR" << endl << "R: /#Nom deja existant" << endl;
+			cerr << "R: ERR" << endl << "R: #Nom deja existant" << endl << endl;
 		}
 	}
 
@@ -109,11 +108,11 @@ void Executeur::executer(list<string> args)
 
 			//On insère le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
-			cout << endl << "R: OK" << endl << "R: /#Nouvel objet: " << nom << endl;
+			cout << "R: OK" << endl << "R: #Nouvel objet: " << nom << endl << endl;
 		}
 		else
 		{
-			cerr << endl << "R: ERR" << endl << "R: /#Nom deja existant" << endl;
+			cerr << "R: ERR" << endl << "R: #Nom deja existant" << endl << endl;
 		}
 
 	}
@@ -151,11 +150,11 @@ void Executeur::executer(list<string> args)
 
 			//On insère le nom dans la map
 			noms.insert(pair<int,string>(dernierId,nom));
-			cout << endl << "R: OK" << endl << "R: /#Nouvel objet: " << nom << endl;
+			cout << "R: OK" << endl << "R: #Nouvel objet: " << nom << endl << endl;
 		}
 		else
 		{
-			cerr << endl << "R: ERR" << endl << "R: /#Nom deja existant" << endl;
+			cerr << "R: ERR" << endl << "R: #Nom deja existant" << endl << endl;
 		}
 	}
 
@@ -171,65 +170,143 @@ void Executeur::executer(list<string> args)
 
 			// On crée une liste de pointeurs de formes qu'on remplit en parcourant args et en vérifiant que les formes existent bien
 			list <Forme*> laListe;
-			while (it != args.end())
+			bool nomExistant = true;
+			while (it != args.end() && nomExistant)
 			{
-				bool nomExistant = true;
 				string nomAnalyse = *it;
-				for (map <int,string>::const_iterator it2=noms.begin(); it2!=noms.end(); ++it2)
+				bool nomTrouve (false);
+				map<int,string>::iterator it2 = noms.begin();
+				while (it2 != noms.end() && !nomTrouve)
 				{
 					string nomUtilise = it2->second;
+					cout << nomUtilise << endl;
 					if (nomAnalyse.compare(nomUtilise) == 0)
 					{
 						/*//Ici je veux affecter un pointeur à la forme dont je teste le nom
 						Forme* pteur = *formes.at(it2->first)->laForme;
 						laListe.push_back(pteur);*/
+						cout << "if " << endl;
+						nomTrouve = true;
 						nomExistant = true;
 					}
 					else
                     {
                         nomExistant = false;
+						cout << "else " << endl;
                     }
-				}
-				if (!nomExistant)
-				{
-					cerr << endl << "R: ERR" << endl << "R: /#Parametres incorrects" << endl;
 				}
 				++it;
 			}
+			if (!nomExistant)
+			{
+				cerr << "R: ERR" << endl << "R: #Parametres incorrects" << endl << endl;
+			}
+			else
+			{
+				Agregat* agregat = new Agregat(laListe);
 
-			Agregat* agregat = new Agregat(laListe);
+				//On crée une formeEtId qu'on insère dans la liste
+				formeEtId nouvelleForme;
+				int dernierId = leControleur.getDernierId();
+				nouvelleForme.laForme=agregat;
+				nouvelleForme.id=dernierId;
+				leControleur.ajouterLaForme(nouvelleForme);
 
-			//On crée une formeEtId qu'on insère dans la liste
-			formeEtId nouvelleForme;
-			int dernierId = leControleur.getDernierId();
-			nouvelleForme.laForme=agregat;
-			nouvelleForme.id=dernierId;
-			leControleur.ajouterLaForme(nouvelleForme);
+				//On insère le nom dans la map
+				noms.insert(pair<int,string>(dernierId,nom));
+				cout << "R: OK" << endl << "R: #Nouvel objet: " << nom << endl << endl;
+			}
 
-			//On insère le nom dans la map
-			noms.insert(pair<int,string>(dernierId,nom));
-			cout << endl << "R: OK" << endl << "R: /#Nouvel objet: " << nom << endl;
-		}
+        }
 		else
 		{
-			cerr << endl << "R: ERR" << endl << "R: /#Nom deja existant" << endl;
+			cerr << "R: ERR" << endl << "R: #Nom deja existant" << endl << endl;
 		}
 	}
+
+	// CAS DU DELETE
+	if (cmdName.compare("DELETE") == 0)
+    {
+        bool nomDeleteExiste (true);
+        while (nomDeleteExiste)
+        {
+            for (it=++args.begin(); it!=args.end();it++)
+            {
+                string nomDelete (*it);
+                int idNomDelete (0);
+                nomDeleteExiste = nomExiste(nomDelete, idNomDelete);
+                if (nomDeleteExiste)
+                {
+                    // On ne peut récupérer que l'id de la forme, mais on ne sait pas à quelle forme elle est associée
+                    //Modifier méthode de suppression et déplacement pour qu'elles ne prennent que des id au lieu des formes.
+                    //leControleur.supprimerLaForme(idNomDelete);
+                }
+                else
+                {
+                    cerr << "R: ERR" << endl << "R: #Aucune forme en memoire ne porte ce nom" << endl << endl;
+                }
+            }
+        }
+    }
+
+    // CAS DU MOVE
+	if (cmdName.compare("MOVE") == 0)
+    {
+        if (existe)
+        {
+            ++it;
+			string nomMove=*it;
+			++it;
+			string X = *it;
+			int dx=atoi(X.c_str());
+			++it;
+			string Y = *it;
+			int dy=atoi(Y.c_str());
+			//même remarque pour l'id connue et la forme manquante
+			//leControleur.deplacerLaForme(idNomForme,dx,dy);
+        }
+        else
+        {
+            cerr << "R: ERR" << endl << "R: #Aucune forme en memoire ne porte ce nom" << endl << endl;
+        }
+    }
+
+    // CAS DU LIST
+	if (cmdName.compare("LIST") == 0)
+    {
+        map<int,string>::iterator itMap;
+        while (itMap != noms.end())
+        {
+            int idFormeList = itMap->first;
+            //Récupérer forme dans Modele à partir de Id
+
+        }
+    }
 
 }
 
-bool Executeur::nomExiste(string leNom)
+bool Executeur::nomExiste(string leNom, int& idNom)
 {
 		// On vérifie que le nom de la forme que l'on désire insérer n'existe pas déjà dans la map noms
-	bool existe = false;
-	for (map<int,string>::iterator it=noms.begin(); it != noms.end(); ++it)
-	{
-		string unNom = it->second;
-		if((leNom.compare(unNom)) == 0)
-		{
-			existe = true;
-		}
-	}
+	bool existe (false);
+	if (noms.size() >= 1)
+    {
+        bool nomTrouve (false);
+        map<int,string>::iterator it = noms.begin();
+        while (it != noms.end() && !nomTrouve)
+        {
+            string unNom = it->second;
+            if((leNom.compare(unNom)) == 0)
+            {
+                existe = true;
+                idNom = it->first;
+            }
+		it++;
+        }
+    }
+    else
+    {
+        existe = false;
+    }
 	return existe;
-
 }

@@ -22,8 +22,8 @@ class Executeur
 	public:
 		Executeur(Controleur unControleur);
 		virtual ~Executeur();
-		void executer(list<string> args);
-		bool nomExiste(string leNom);
+		void executer(list<string>& args);
+		bool nomExiste(string leNom, int& idNom);
 };
 
 #endif

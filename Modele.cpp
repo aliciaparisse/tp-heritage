@@ -6,7 +6,9 @@
 
 #include "Modele.h"
 
-Modele::Modele() : dernierId(0)
+int Modele::dernierId = 0;
+
+Modele::Modele()
 {
 }
 

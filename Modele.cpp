@@ -8,7 +8,7 @@
 
 int Modele::dernierId = 0;
 
-Modele::Modele()
+Modele::Modele() : dernierId(0)
 {
 }
 

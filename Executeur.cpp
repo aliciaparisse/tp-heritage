@@ -29,7 +29,7 @@ void Executeur::executer(list<string>& args)
 
 	// CAS DU CERCLE
 	if(cmdName.compare("C") == 0)
-	{
+	{	
 		// Si le nom n'existe pas déjà, on crée la forme en question
 		if (!existe)
 		{

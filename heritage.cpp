@@ -1,4 +1,4 @@
-//---------------------------------
+//-----------------------------------
 // TP C++ 3 : TP Héritage et Entrées/Sorties
 // Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // heritage.cpp
@@ -19,7 +19,7 @@ int main (int arc, const char **argv)
     Executeur* executeur = new Executeur(unControleur);
 	while (continuer)
 	{
-		string cmd;
+		string cmd;  
 		cout << endl << "C: ";
 		getline(cin,cmd);
 		CommandReader* cmdRd = new CommandReader(cmd);

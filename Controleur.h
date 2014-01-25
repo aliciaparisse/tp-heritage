@@ -11,6 +11,7 @@
 #include "ajoutForme.h"
 #include "delForme.h"
 #include "deplacerForme.h"
+#include "LoadFile.h"
 #include "Modele.h"
 #include  <vector>
 

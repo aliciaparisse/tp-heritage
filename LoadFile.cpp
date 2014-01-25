@@ -6,8 +6,8 @@
 
 #include "LoadFile.h"
 
-LoadFile::LoadFile(Controleur &unControleur, )
-	:controleur(unControleur), executeur(unExecuteur)
+LoadFile::LoadFile(Controleur* unControleur, string &unNomFichier)
+	:controleur(unControleur), nomFichier(unNomFichier)
 {
 }
 
@@ -17,15 +17,13 @@ LoadFile::~LoadFile()
 
 void LoadFile::Do()
 {
-	ifstream ficDesc (nomFichier, ios::openmode mode = ios::in)
-	Controleur unControleur;
-  Executeur* executeur = new Executeur(unControleur);
+	ifstream ficDesc (nomFichier, std::ifstream::in);
+	Executeur* executeur = new Executeur(controleur);
 	while(!ficDesc.eof())
 	{
 		
 		string cmd;
-		
-		cin >> cmd;
+		getline(ficDesc, cmd);
 		CommandReader* cmdRd = new CommandReader(cmd);
 		bool estValide (true);
 		if (cmd.compare("EXIT") != 0)
@@ -40,7 +38,6 @@ void LoadFile::Do()
 		else
 		{
 			cout << endl << "R: " << endl;
-			continuer = false;
 		}
 	}
 
@@ -48,5 +45,6 @@ void LoadFile::Do()
 
 void LoadFile::Undo()
 {
+
 }
 

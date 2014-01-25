@@ -14,11 +14,13 @@
 
 using namespace std;
 
+class Controleur;
+
 class Executeur
 {
 	private:
 		Controleur* leControleur;
-        vector<string> noms;
+    vector<string> noms;
 
 	public:
 		Executeur(Controleur* unControleur);

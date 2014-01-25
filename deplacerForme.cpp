@@ -6,8 +6,8 @@
 
 #include "deplacerForme.h"
 
-deplacerForme::deplacerForme(formeEtId& uneForme, Modele& unModele, int& unDepX, int& unDepY)
-	: formeTraitee(uneForme), modeleUtilise(unModele), depX(unDepX), depY(unDepY)
+deplacerForme::deplacerForme(string& unNom, Modele* unModele, int& unDepX, int& unDepY)
+	: nomFormeTraitee(unNom), modeleUtilise(unModele), depX(unDepX), depY(unDepY)
 {
 }
 
@@ -17,10 +17,13 @@ deplacerForme::~deplacerForme()
 
 void deplacerForme::Do()
 {
-	modeleUtilise.deplacerForme((formeTraitee.id), depX, depY);
+	cout << "do deplacer" << endl;
+	modeleUtilise->deplacerForme(nomFormeTraitee, depX, depY);
 }
 
 void deplacerForme::Undo()
 {
-	modeleUtilise.deplacerForme((formeTraitee.id), -depX, -depY);
+	depX=-depX;
+	depY=-depY;
+	modeleUtilise->deplacerForme(nomFormeTraitee,depX,depY);
 }

@@ -6,8 +6,8 @@
 
 #include "Polyligne.h"
 
-Polyligne::Polyligne(list<Point*> uneListe)
-	: points(uneListe)
+Polyligne::Polyligne(string& nom, list<Point*>& uneListe)
+	: points(uneListe), nomPoly(nom)
 {
 }
 

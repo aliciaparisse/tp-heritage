@@ -5,8 +5,8 @@
 //-----------------------------------
 #include "Ligne.h"
 
-Ligne::Ligne(int& unX1, int& unY1, int& unX2, int& unY2)
-	: point1(unX1, unY1), point2(unX2, unY2)
+Ligne::Ligne(string& nom,int& unX1, int& unY1, int& unX2, int& unY2)
+	: point1(unX1, unY1), point2(unX2, unY2), nomLigne(nom)
 {
 }
 

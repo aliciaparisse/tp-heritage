@@ -21,18 +21,19 @@ class Controleur
 {
 	private:
 		vector <Command*> commandes;
-		Modele monModele;
+		Modele* monModele;
 		static int commandeCourante;
 
 	public:
 		Controleur();
 		virtual ~Controleur();
-		void ajouterLaForme(formeEtId& formeAjoutee);
-		void supprimerLaForme(formeEtId& formeSupprimee);
-		void deplacerLaForme(formeEtId& formeDeplacee, int& dx, int& dy);
+		void ajouterLaForme(string& nom,infoFormes& formeAjoutee);
+		void supprimerLaForme(string& nomFormeSupprimee);
+		void deplacerLaForme(string& nomFormeDeplacee, int& dx, int& dy);
 		void chargerUnFichier(string& nomFichier);
 		void Undo();
-		void Redo(); 
-		int getDernierId();
+		void Redo();
+		string afficherElements (string& nom);
+		int getNbFormes();
 };
 #endif

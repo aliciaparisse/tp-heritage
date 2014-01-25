@@ -10,20 +10,21 @@
 #include <iostream>
 #include "Controleur.h"
 #include  <list>
+#include <vector>
 
 using namespace std;
 
 class Executeur
 {
 	private:
-		Controleur leControleur;
-		map<int,string> noms;
+		Controleur* leControleur;
+        vector<string> noms;
 
 	public:
-		Executeur(Controleur unControleur);
+		Executeur(Controleur* unControleur);
 		virtual ~Executeur();
 		void executer(list<string>& args);
-		bool nomExiste(string leNom, int& idNom);
+		bool nomExiste(string leNom);
 };
 
 #endif

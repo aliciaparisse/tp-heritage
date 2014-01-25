@@ -14,30 +14,32 @@
 #include "Polyligne.h"
 #include "Agregat.h"
 #include "Point.h"
-#include <vector>
+#include <map>
 #include <iostream>
 
 using namespace std;
 
-struct formeEtId
+struct infoFormes
 {
-	int id;
 	Forme* laForme;
+	string codeForme;
 };
 
 class Modele
 {
 	private:
-		vector <formeEtId*> formes;
-		static int dernierId;
+		map <string,infoFormes> formes;
+		static int nbFormes;
 
 	public:
 		Modele();
 		virtual ~Modele();
-		void ajoutForme(formeEtId* unPtForme);
-		void supprForme(int idFormeSuppr);
-		void deplacerForme(int idFormeDep, int unDx, int unDy);
-		int getDernierId();
+		void ajoutForme(string& nom, infoFormes& formes);
+		void supprForme(string& nomFormeSuppr);
+		void deplacerForme(string& nomFormeDep, int& unDx, int& unDy);
+		string afficherElements (string& nom);
+		int getNbFormes();
+		//void getFormeEtId(int& id, formeEtId* formeCherchee);
 };
 
 #endif

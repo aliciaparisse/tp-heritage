@@ -5,8 +5,8 @@
 //-----------------------------------
 #include "delForme.h"
 
-delForme::delForme(formeEtId& uneForme, Modele& unModele)
-	: formeTraitee(uneForme), modeleUtilise(unModele)
+delForme::delForme(string& unNom, Modele* unModele)
+	: nom(unNom), modeleUtilise(unModele)
 {
 }
 
@@ -16,12 +16,13 @@ delForme::~delForme()
 
 void delForme::Do()
 {
-	modeleUtilise.supprForme(formeTraitee.id);
+	modeleUtilise->supprForme(nom);
 }
 void delForme::Undo()
 {
-	formeEtId* pointeur = &formeTraitee;
-	modeleUtilise.ajoutForme(pointeur);
+	/*formeEtId* pointeur = &formeTraitee;
+	modeleUtilise.ajoutForme(pointeur);*/
+	//Ajouter getteur pour récupérer forme depuis ID.
 }
 
 

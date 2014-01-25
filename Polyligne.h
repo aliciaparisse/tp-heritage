@@ -18,9 +18,10 @@ class Polyligne : public Forme
 {
 	private:
 		list<Point*> points;
+		string nomPoly;
 
 	public:
-		Polyligne(list<Point*> uneListe);
+		Polyligne(string& nom, list<Point*>& uneListe);
 		virtual ~Polyligne();
 		void deplacer(int& dx, int& dy);
 

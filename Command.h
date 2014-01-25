@@ -19,7 +19,6 @@ class Command
 {
 	protected:
 	 	Modele modeleUtilise;
-		formeEtId formeTraitee;
 	public:
 		Command(){}
 		~Command(){}

@@ -8,6 +8,8 @@
 #ifndef POINT_H
 #define POINT_H
 
+#include <string>
+
 
 using namespace std;
 
@@ -19,6 +21,7 @@ class Point
 		virtual ~Point();
 
 		void deplacer(int& dx, int& dy);
+		string getCoord ();
 
 
 	private:

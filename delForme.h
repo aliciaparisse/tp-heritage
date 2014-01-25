@@ -12,11 +12,11 @@ using namespace std;
 class delForme : public Command
 {
 	protected:
-	 	Modele modeleUtilise;
-		formeEtId formeTraitee;
+	 	string nom;
+	 	Modele* modeleUtilise;
 
 	public:
-		delForme(formeEtId& uneForme, Modele& unModele);
+		delForme(string& unNom, Modele* unModele);
 		~delForme();
 		void Do();
 		void Undo();

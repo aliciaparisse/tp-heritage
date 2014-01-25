@@ -6,8 +6,8 @@
 
 #include "Rectangle.h"
 
-Rectangle::Rectangle(int& unX1, int& unY1, int& unX2, int& unY2)
-	: point1(unX1, unY1), point2(unX1, unY2), point3(unX2, unY2), point4(unX2, unY1)
+Rectangle::Rectangle(string& nom, int& unX1, int& unY1, int& unX2, int& unY2)
+	: point1(unX1, unY1), point2(unX1, unY2), point3(unX2, unY2), point4(unX2, unY1), nomRec(nom)
 {
 }
 

@@ -16,7 +16,7 @@ class Rectangle : public Forme
 {
 
 	public:
-		Rectangle(int& x1, int& y1, int& x2, int& y2);
+		Rectangle(string& nom, int& x1, int& y1, int& x2, int& y2);
 		virtual	~Rectangle();
 		void deplacer(int& dx, int& dy);
 
@@ -25,6 +25,7 @@ class Rectangle : public Forme
 		Point point2;
         Point point3;
 		Point point4;
+		string nomRec;
 
 };
 

@@ -16,13 +16,15 @@ class Cercle: public Forme
 {
 
 	public:
-		Cercle(int& x, int& y,  int& rayon);
+		Cercle(string& nom, int& x, int& y,  int& rayon);
 		virtual	~Cercle();
 		void deplacer(int& dx, int& dy);
+		string afficherCoord ();
 
 	private:
 		int rayon;
 		Point centre;
+		string nomCercle;
 
 };
 

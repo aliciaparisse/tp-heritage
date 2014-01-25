@@ -15,11 +15,11 @@ using namespace std;
 int main (int arc, const char **argv)
 {
 	bool continuer (true);
-    Controleur unControleur;
-    Executeur* executeur = new Executeur(unControleur);
+                Controleur unControleur;
+                Executeur* executeur = new Executeur(unControleur);
 	while (continuer)
 	{
-		string cmd;  
+		string cmd;
 		cout << endl << "C: ";
 		getline(cin,cmd);
 		CommandReader* cmdRd = new CommandReader(cmd);

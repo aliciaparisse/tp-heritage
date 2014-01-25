@@ -6,8 +6,8 @@
 
 #include "LoadFile.h"
 
-LoadFile::LoadFile(formeEtId &uneForme, Modele &unModele)
-	:formeTraitee(uneForme), modeleUtilise(unModele)
+LoadFile::LoadFile(Controleur &unControleur, )
+	:controleur(unControleur), executeur(unExecuteur)
 {
 }
 
@@ -18,10 +18,13 @@ LoadFile::~LoadFile()
 void LoadFile::Do()
 {
 	ifstream ficDesc (nomFichier, ios::openmode mode = ios::in)
+	Controleur unControleur;
+  Executeur* executeur = new Executeur(unControleur);
 	while(!ficDesc.eof())
 	{
+		
 		string cmd;
-		cout << endl << "C: ";
+		
 		cin >> cmd;
 		CommandReader* cmdRd = new CommandReader(cmd);
 		bool estValide (true);
@@ -31,9 +34,7 @@ void LoadFile::Do()
 			estValide = cmdRd->readCommand(listArgument);
 			if (estValide)
 			{
-                Controleur unControleur;
-                Executeur* executeur = new Executeur(unControleur);
-                executeur->executer(listArgument);
+      	executeur->executer(listArgument);
 			}
 		}
 		else

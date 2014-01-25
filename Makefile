@@ -3,7 +3,7 @@ CC=g++
 CFLAGS=-std=c++11
 LDFLAGS=
 EXEC=heritage
-SRC=Cercle.cpp Rectangle.cpp Point.cpp Polyligne.cpp Agregat.cpp heritage.cpp Ligne.cpp Modele.cpp ajoutForme.cpp delForme.cpp deplacerForme.cpp CommandReader.cpp Controleur.cpp Executeur.cpp
+SRC=Cercle.cpp Rectangle.cpp Point.cpp Polyligne.cpp Agregat.cpp heritage.cpp Ligne.cpp Modele.cpp ajoutForme.cpp delForme.cpp deplacerForme.cpp CommandReader.cpp Controleur.cpp Executeur.cpp LoadFile.cpp
 INT=$(SRC:.cpp=.h)
 OBJ=$(SRC:.cpp=.o) heritage.o
 
@@ -25,9 +25,11 @@ Modele.o : Forme.h Cercle.h Rectangle.h Ligne.h Polyligne.h Agregat.h Point.h
 ajoutForme.o : Command.h
 delForme.o : Command.h
 deplacerForme.o : Command.h
-Controleur.o : Command.h ajoutForme.h delForme.h deplacerForme.h Modele.h
+Controleur.o : Command.h ajoutForme.h delForme.h deplacerForme.h LoadFile.h Modele.h
 Executeur.o : Controleur.h
 heritage.o : CommandReader.h Executeur.h Controleur.h
+LoadFile.o : Command.h Controleur.h Executeur.h CommandReader.h
+
 
 	
 %.o: %.cpp

@@ -282,7 +282,19 @@ void Executeur::executer(list<string>& args)
         cout << "R: #Le modele actuel compte " << nbElements << " objets" << endl << endl;
     }
 
-    // CAS DU UNDO
+
+    // CAS DU LOAD
+	if(cmdName.compare("LOAD")==0)
+	{
+		++it;
+		string nomFichierExt=*it;	
+		int posPt = nomFichierExt.rfind('.');
+		string nomFichier=nomFichierExt.substr(0,posPt);
+		leControleur->chargerUnFichier(nomFichier); 
+
+	}
+	
+	// CAS DU UNDO
 	if (cmdName.compare("UNDO") == 0)
     {
         int commandeCourante = leControleur->getCommandeCourante();

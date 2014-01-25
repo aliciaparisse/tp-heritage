@@ -16,14 +16,16 @@
 
 using namespace std; 
 
+class Controleur;
+
 class LoadFile : public Command 
 {
 	protected:
-	 	Modele modeleUtilise;	
-		formeEtId formeTraitee;
+	 	Controleur* controleur;
+		string nomFichier;
 
 	public: 
-		LoadFile(formeEtId &uneForme, Modele &unModele);
+		LoadFile(Controleur* unControleur, string& unNomFichier);
 		~LoadFile(); 
 		void Do();
 		void Undo(); 

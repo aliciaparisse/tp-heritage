@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP HÃ©ritage et EntrÃ©es/Sorties
-// RÃ©alisÃ© par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // LoadFile.cpp
 //-----------------------------------
 
@@ -17,11 +17,11 @@ LoadFile::~LoadFile()
 
 void LoadFile::Do()
 {
-	ifstream ficDesc (nomFichier, std::ifstream::in);
+	ifstream ficDesc(nomFichier.c_str(), std::ifstream::in);
 	Executeur* executeur = new Executeur(controleur);
 	while(!ficDesc.eof())
 	{
-		
+
 		string cmd;
 		getline(ficDesc, cmd);
 		CommandReader* cmdRd = new CommandReader(cmd);

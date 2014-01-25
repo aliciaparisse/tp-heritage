@@ -49,7 +49,7 @@ void Controleur::deplacerLaForme(string& nomFormeDeplacee, int& dx, int& dy)
 
 void Controleur::chargerUnFichier(string& nomFichier)
 {
-	LoadFile* load = new LoadFile((*this), nomFichier);
+	LoadFile* load = new LoadFile(this, nomFichier);
 	load->Do();
 	commandeCourante++;
 }

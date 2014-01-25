@@ -20,9 +20,8 @@ void delForme::Do()
 }
 void delForme::Undo()
 {
-	/*formeEtId* pointeur = &formeTraitee;
-	modeleUtilise.ajoutForme(pointeur);*/
-	//Ajouter getteur pour récupérer forme depuis ID.
+	infoFormes rajoutForme = modeleUtilise->getInfoFormes(nom);
+	modeleUtilise->ajoutForme(nom,rajoutForme);
 }
 
 

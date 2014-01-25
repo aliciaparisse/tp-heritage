@@ -19,9 +19,7 @@ Cercle::~Cercle()
 
 void Cercle::deplacer(int& dx, int& dy)
 {
-	cout << "appel Cercle" << endl;
 	this->centre.deplacer(dx, dy);
-	cout << "Cercle deplace de : " << dx << "," << dy << endl;
 }
 
 string Cercle::afficherCoord ()

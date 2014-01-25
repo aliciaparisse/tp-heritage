@@ -17,7 +17,6 @@ deplacerForme::~deplacerForme()
 
 void deplacerForme::Do()
 {
-	cout << "do deplacer" << endl;
 	modeleUtilise->deplacerForme(nomFormeTraitee, depX, depY);
 }
 

@@ -14,13 +14,13 @@
 #include "Modele.h"
 #include  <vector>
 
-
 using namespace std;
 
 class Controleur
 {
 	private:
 		vector <Command*> commandes;
+		vector <int> listCommandUndo;
 		Modele* monModele;
 		static int commandeCourante;
 
@@ -35,5 +35,7 @@ class Controleur
 		void Redo();
 		string afficherElements (string& nom);
 		int getNbFormes();
+		int getCommandeCourante();
+		bool enableRedo();
 };
 #endif

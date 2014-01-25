@@ -39,7 +39,7 @@ class Modele
 		void deplacerForme(string& nomFormeDep, int& unDx, int& unDy);
 		string afficherElements (string& nom);
 		int getNbFormes();
-		//void getFormeEtId(int& id, formeEtId* formeCherchee);
+		infoFormes getInfoFormes(string& nom);
 };
 
 #endif

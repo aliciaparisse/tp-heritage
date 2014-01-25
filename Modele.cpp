@@ -32,7 +32,6 @@ void Modele::deplacerForme(string& nom, int& unDx, int& unDy)
 {
     map<string,infoFormes>::iterator itMap = formes.find(nom);
     Forme* deplaceForme = (itMap->second).laForme;
-    cout << "Appel Modele" << endl;
     deplaceForme->deplacer(unDx,unDy);
 }
 
@@ -55,8 +54,8 @@ int Modele::getNbFormes()
 	return nbFormes;
 }
 
-/*void Modele::getFormeEtId(int& id, formeEtId* formeCherchee)
+infoFormes Modele::getInfoFormes(string& nom)
 {
-    formeCherchee = formes.at(id);
+    map<string,infoFormes>::iterator itMap = formes.find(nom);
+    return itMap->second;
 }
-*/

@@ -43,7 +43,7 @@ void Executeur::executer(list<string>& args)
 			++it;
 			string R = *it;
 			int r=atoi(R.c_str());
-			Forme* cercle = new Cercle(nom,x,y,r);
+			Cercle* cercle = new Cercle(nom,x,y,r);
 
 			//On crée une formeEtId qu'on insère dans la liste
 			infoFormes nouvelleForme;
@@ -282,6 +282,46 @@ void Executeur::executer(list<string>& args)
         cout << "R: #Le modele actuel compte " << nbElements << " objets" << endl << endl;
     }
 
+    // CAS DU UNDO
+	if (cmdName.compare("UNDO") == 0)
+    {
+        int commandeCourante = leControleur->getCommandeCourante();
+        if (commandeCourante>0)
+        {
+            leControleur->Undo();
+            cout << "R: OK" << endl << endl;
+        }
+        else
+        {
+            cerr << "R: ERR" << endl << "R: #Aucune commande disponible pour UNDO" << endl << endl;
+        }
+    }
+
+    // CAS DU REDO
+	if (cmdName.compare("REDO") == 0)
+    {
+        bool enableRedo = leControleur->enableRedo();
+        if (enableRedo)
+        {
+            leControleur->Redo();
+            cout << "R: OK" << endl << endl;
+        }
+        else
+        {
+            cerr << "R: ERR" << endl << "R: #Commande UNDO necessaire avant d'executer un REDO" << endl << endl;
+        }
+    }
+/*
+    // CAS DU CLEAR
+	if (cmdName.compare("CLEAR") == 0)
+    {
+        vector<string>::iterator itNom = noms.begin();
+        for (itNom;itNom != noms.end();itNom++)
+        {
+            leControleur->supprimerLaForme(*itNom);
+        }
+    }
+*/
 }
 
 bool Executeur::nomExiste(string leNom)

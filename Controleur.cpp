@@ -43,7 +43,6 @@ void Controleur::deplacerLaForme(string& nomFormeDeplacee, int& dx, int& dy)
 {
 	deplacerForme* deplacer = new deplacerForme (nomFormeDeplacee, monModele, dx, dy);
 	commandes.push_back(deplacer);
-	cout << "appel controleur" << endl;
 	deplacer->Do();
 	commandeCourante++;
 }
@@ -55,14 +54,16 @@ void Controleur::chargerUnFichier(string& nomFichier)
 
 void Controleur::Undo()
 {
-	(commandes.at(commandeCourante))->Undo();
 	commandeCourante--;
+	listCommandUndo.push_back(commandeCourante);
+	(commandes.at(commandeCourante))->Undo();
+
 }
 
 void Controleur::Redo()
 {
-	commandeCourante++;
 	(commandes.at(commandeCourante))->Do();
+    commandeCourante++;
 }
 
 string Controleur::afficherElements (string& nom)
@@ -75,3 +76,20 @@ int Controleur::getNbFormes()
 	return monModele->getNbFormes();
 }
 
+int Controleur::getCommandeCourante()
+{
+    return commandeCourante;
+}
+
+bool Controleur::enableRedo()
+{
+    int nbDernierUndo = listCommandUndo.back();
+    if (commandeCourante == nbDernierUndo)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

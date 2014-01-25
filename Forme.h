@@ -16,7 +16,7 @@ class Forme
 	public:
 		Forme (){}
         virtual ~Forme(){}
-        virtual void deplacer(int dx, int dy){}
+        virtual void deplacer(int& dx, int& dy){}
         virtual string afficherCoord() = 0;
 };
 

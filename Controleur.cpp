@@ -11,6 +11,8 @@ int Controleur::commandeCourante = 0;
 //Contructeur de la classe
 Controleur::Controleur()
 {
+    Modele* unModele = new Modele();
+    monModele = unModele;
 }
 
 //Destructeur de la classe
@@ -19,28 +21,29 @@ Controleur::~Controleur()
 }
 
 //Le controleur ajoute La Forme formeAjoutee à son Modèle
-void Controleur::ajouterLaForme(formeEtId& formeAjoutee)
+void Controleur::ajouterLaForme(string& nom,infoFormes& formeAjoutee)
 {
-	ajoutForme* ajout= new ajoutForme(formeAjoutee, monModele);
+	ajoutForme* ajout= new ajoutForme(nom, formeAjoutee, monModele);
 	commandes.push_back(ajout);
 	ajout->Do();
  	commandeCourante++;
 }
 
 //Le controleur supprime la forme formeSupprimee de son Modèle
-void Controleur::supprimerLaForme(formeEtId& formeSupprimee)
+void Controleur::supprimerLaForme(string& nomFormeSupprimee)
 {
-	delForme* suppr = new delForme (formeSupprimee, monModele);
+	delForme* suppr = new delForme (nomFormeSupprimee, monModele);
 	commandes.push_back(suppr);
 	suppr->Do();
 	commandeCourante++;
 }
 
 //Le controleur déplace la forme formeDeplacee dans son Modèle
-void Controleur::deplacerLaForme(formeEtId& formeDeplacee, int& dx, int& dy)
+void Controleur::deplacerLaForme(string& nomFormeDeplacee, int& dx, int& dy)
 {
-	deplacerForme* deplacer = new deplacerForme (formeDeplacee, monModele, dx, dy);
+	deplacerForme* deplacer = new deplacerForme (nomFormeDeplacee, monModele, dx, dy);
 	commandes.push_back(deplacer);
+	cout << "appel controleur" << endl;
 	deplacer->Do();
 	commandeCourante++;
 }
@@ -62,8 +65,13 @@ void Controleur::Redo()
 	(commandes.at(commandeCourante))->Do();
 }
 
-int Controleur::getDernierId()
+string Controleur::afficherElements (string& nom)
 {
-	return monModele.getDernierId();
+    return monModele->afficherElements (nom);
+}
+
+int Controleur::getNbFormes()
+{
+	return monModele->getNbFormes();
 }
 

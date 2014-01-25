@@ -7,8 +7,8 @@
 #include "ajoutForme.h"
 
 
-ajoutForme::ajoutForme(formeEtId &uneForme, Modele &unModele)
-	: formeTraitee(uneForme), modeleUtilise(unModele)
+ajoutForme::ajoutForme(string& unNom, infoFormes& uneForme, Modele* unModele)
+	: nom(unNom), formeTraitee(uneForme), modeleUtilise(unModele)
 {
 }
 
@@ -18,13 +18,12 @@ ajoutForme::~ajoutForme()
 
 void ajoutForme::Do()
 {
-	formeEtId* pointeur = &formeTraitee;
-	modeleUtilise.ajoutForme(pointeur);
+	modeleUtilise->ajoutForme(nom,formeTraitee);
 }
 
 void ajoutForme::Undo()
 {
-	modeleUtilise.supprForme(formeTraitee.id);
+	modeleUtilise->supprForme(nom);
 }
 
 

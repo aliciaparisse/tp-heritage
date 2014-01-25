@@ -7,6 +7,8 @@
 #ifndef FORME_H
 #define FORME_H
 
+#include <string>
+#include <sstream>
 using namespace std;
 
 class Forme
@@ -15,6 +17,7 @@ class Forme
 		Forme (){}
         virtual ~Forme(){}
         virtual void deplacer(int dx, int dy){}
+        virtual string afficherCoord() = 0;
 };
 
 #endif

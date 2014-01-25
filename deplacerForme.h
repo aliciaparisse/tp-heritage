@@ -8,20 +8,19 @@
 #define DEPLACERFORME_H
 #include "Command.h"
 
-
 using namespace std;
 
 class deplacerForme : public Command
 {
 	protected:
-	 	Modele modeleUtilise;
-		formeEtId formeTraitee;
+	 	string nomFormeTraitee;
+	 	Modele* modeleUtilise;
 
 	private:
 		int depX;
 		int depY;
 	public:
-		deplacerForme(formeEtId& uneForme, Modele& unModele, int& unDepX, int& unDepY);
+		deplacerForme(string& unNom, Modele* unModele, int& unDepX, int& unDepY);
 		~deplacerForme();
 		void Do();
 		void Undo();

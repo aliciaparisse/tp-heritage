@@ -13,11 +13,12 @@ using namespace std;
 class ajoutForme : public Command
 {
 	protected:
-	 	Modele modeleUtilise;
-		formeEtId formeTraitee;
+	 	string nom;
+	 	infoFormes formeTraitee;
+	 	Modele* modeleUtilise;
 
 	public:
-		ajoutForme(formeEtId &uneForme, Modele &unModele);
+		ajoutForme(string& unNom, infoFormes& uneForme, Modele* unModele);
 		~ajoutForme();
 		void Do();
 		void Undo();

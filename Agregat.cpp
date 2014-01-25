@@ -7,7 +7,7 @@
 
 #include "Agregat.h"
 
-Agregat::Agregat (list <Forme*> uneListe)
+Agregat::Agregat (list <Forme*>& uneListe)
 	: formesA(uneListe)
 {
 }

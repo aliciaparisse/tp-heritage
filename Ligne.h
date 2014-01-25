@@ -19,9 +19,10 @@ class Ligne : public Forme
 	private:
 		Point point1;
 		Point point2;
+		string nomLigne;
 
 	public:
-		Ligne(int& X1, int& X2, int& Y1, int& Y2);
+		Ligne(string& nom,int& X1, int& X2, int& Y1, int& Y2);
 		virtual ~Ligne();
 		void deplacer(int& dx, int& dy);
 

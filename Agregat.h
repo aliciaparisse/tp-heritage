@@ -13,7 +13,7 @@ class Agregat : public Forme
 {
 
 	public:
-		Agregat(list <Forme*> uneListe);
+		Agregat(list <Forme*>& uneListe);
 		virtual ~Agregat();
 		void deplacer(int& dx, int& dy);
 

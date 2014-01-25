@@ -15,6 +15,8 @@ using namespace std;
 int main (int arc, const char **argv)
 {
 	bool continuer (true);
+	Controleur* unControleur = new Controleur();
+    Executeur* executeur = new Executeur(unControleur);
 	while (continuer)
 	{
 		string cmd;
@@ -28,8 +30,6 @@ int main (int arc, const char **argv)
 			estValide = cmdRd->readCommand(listArgument);
 			if (estValide)
 			{
-                Controleur unControleur;
-                Executeur* executeur = new Executeur(unControleur);
                 executeur->executer(listArgument);
 			}
 		}

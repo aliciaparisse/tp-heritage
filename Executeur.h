@@ -19,7 +19,7 @@ class Controleur;
 class Executeur
 {
 	private:
-		Controleur* leControleur;
+    Controleur* leControleur;
     vector<string> noms;
 
 	public:

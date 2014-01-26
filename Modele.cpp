@@ -6,10 +6,9 @@
 
 #include "Modele.h"
 
-int Modele::nbFormes = 0;
-
 Modele::Modele()
 {
+    nbFormes =0;
 }
 
 Modele::~Modele()
@@ -58,4 +57,22 @@ infoFormes Modele::getInfoFormes(string& nom)
 {
     map<string,infoFormes>::iterator itMap = formes.find(nom);
     return itMap->second;
+}
+
+void Modele::modifVectExecuteur(string& nom, int& expediteur)
+{
+    infosUndo.nomFormeUndo = nom;
+    if (expediteur == 1)
+    {
+        infosUndo.actionUndo = "undoAjout";
+    }
+    else if (expediteur == 2)
+    {
+        infosUndo.actionUndo = "undoSuppr";
+    }
+}
+
+infoUndo Modele::getInfoUndo()
+{
+    return infosUndo;
 }

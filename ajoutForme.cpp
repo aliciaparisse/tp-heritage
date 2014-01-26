@@ -23,7 +23,9 @@ void ajoutForme::Do()
 
 void ajoutForme::Undo()
 {
+	int i = 1;
 	modeleUtilise->supprForme(nom);
+	modeleUtilise->modifVectExecuteur(nom,i);
 }
 
 

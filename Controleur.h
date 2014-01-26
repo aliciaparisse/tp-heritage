@@ -38,5 +38,6 @@ class Controleur
 		int getNbFormes();
 		int getCommandeCourante();
 		bool enableRedo();
+		infoUndo getModifVectExecuteur ();
 };
 #endif

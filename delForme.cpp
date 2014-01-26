@@ -20,8 +20,10 @@ void delForme::Do()
 }
 void delForme::Undo()
 {
+	int i = 2;
 	infoFormes rajoutForme = modeleUtilise->getInfoFormes(nom);
 	modeleUtilise->ajoutForme(nom,rajoutForme);
+	modeleUtilise->modifVectExecuteur(nom,i);
 }
 
 

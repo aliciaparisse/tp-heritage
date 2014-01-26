@@ -45,13 +45,11 @@ void Executeur::executer(list<string>& args)
 			int r=atoi(R.c_str());
 			Cercle* cercle = new Cercle(nom,x,y,r);
 
-			//On crée une formeEtId qu'on insère dans la liste
 			infoFormes nouvelleForme;
 			nouvelleForme.laForme= cercle;
 			nouvelleForme.codeForme=cmdName;
 			leControleur->ajouterLaForme(nom,nouvelleForme);
 
-			//On insère le nom dans la map
 			noms.push_back(nom);
 			cout << "R: OK" << endl << "R: #Nouvel objet: " << nom << endl << endl;
 		}
@@ -59,8 +57,8 @@ void Executeur::executer(list<string>& args)
 		{
 			cerr << "R: ERR" << endl << "R: #Nom deja existant" << endl << endl;
 		}
-	}/*
-
+	}
+/*
 	// CAS DU RECTANGLE OU DE LA LIGNE
 	if ((cmdName.compare("R") == 0) || (cmdName.compare("L")==0))
 	{
@@ -287,41 +285,87 @@ void Executeur::executer(list<string>& args)
 	if(cmdName.compare("LOAD")==0)
 	{
 		++it;
-		string nomFichierExt=*it;	
+		string nomFichierExt=*it;
 		int posPt = nomFichierExt.rfind('.');
 		string nomFichier=nomFichierExt.substr(0,posPt);
-		leControleur->chargerUnFichier(nomFichier); 
+		leControleur->chargerUnFichier(nomFichier);
 
 	}
-	
-	// CAS DU UNDO
-	if (cmdName.compare("UNDO") == 0)
-    {
-        int commandeCourante = leControleur->getCommandeCourante();
-        if (commandeCourante>0)
-        {
-            leControleur->Undo();
-            cout << "R: OK" << endl << endl;
-        }
-        else
-        {
-            cerr << "R: ERR" << endl << "R: #Aucune commande disponible pour UNDO" << endl << endl;
-        }
-    }
 
-    // CAS DU REDO
-	if (cmdName.compare("REDO") == 0)
+	// CAS DU UNDO ET REDO
+	if ((cmdName.compare("UNDO") == 0) || (cmdName.compare("REDO") == 0))
     {
-        bool enableRedo = leControleur->enableRedo();
-        if (enableRedo)
+        infoUndo temp;
+        static string nomTemp = "";
+        static string actionTemp = "";
+        if (cmdName.compare("UNDO") == 0)
         {
-            leControleur->Redo();
-            cout << "R: OK" << endl << endl;
+            int commandeCourante = leControleur->getCommandeCourante();
+            if (commandeCourante>0)
+            {
+                leControleur->Undo();
+                temp = leControleur->getModifVectExecuteur ();
+                nomTemp = temp.nomFormeUndo;
+                actionTemp = temp.actionUndo;
+                if (actionTemp.compare("undoAjout") == 0)
+                {
+                    vector<string>::iterator itNoms = noms.begin();
+                    while (nomTemp.compare(*itNoms) != 0)
+                    {
+                        itNoms++;
+                    }
+                    cout << "nom a supprimer : " << *itNoms << endl;
+                    noms.erase(itNoms);
+                }
+                else if (actionTemp.compare("undoSuppr") == 0)
+                {
+                    cout << "nom a rajouter : " << nomTemp << endl;
+                    noms.push_back(nomTemp);
+                }
+                cout << "R: OK" << endl << endl;
+            }
+            else
+            {
+                cerr << "R: ERR" << endl << "R: #Aucune commande disponible pour UNDO" << endl << endl;
+            }
         }
-        else
+        else if (cmdName.compare("REDO") == 0)
         {
-            cerr << "R: ERR" << endl << "R: #Commande UNDO necessaire avant d'executer un REDO" << endl << endl;
+            int commandeCourante = leControleur->getCommandeCourante();
+            if (commandeCourante>0)
+            {
+                bool enableRedo = leControleur->enableRedo();
+                if (enableRedo)
+                {
+                    leControleur->Redo();
+                    if (actionTemp.compare("undoAjout") == 0)
+                    {
+                        cout << "Nom a re-rajouter : " << nomTemp << endl;
+                        noms.push_back(nomTemp);
+                    }
+                    else if (actionTemp.compare("undoSuppr") == 0)
+                    {
+                        vector<string>::iterator itNoms = noms.begin();
+                        while (nomTemp.compare(*itNoms) != 0)
+                        {
+                            itNoms++;
+                        }
+                        cout << "Nom a re-resupprimer : " << *itNoms << endl;
+                        noms.erase(itNoms);
+                    }
+                    cout << "R: OK" << endl << endl;
+                }
+                else
+                {
+                    cerr << "R: ERR" << endl << "R: #Commande UNDO necessaire avant d'executer un REDO" << endl << endl;
+                }
+            }
+            else
+            {
+                cerr << "R: ERR" << endl << "R: #Aucune commande disponible pour REDO" << endl << endl;
+            }
         }
+
     }
 /*
     // CAS DU CLEAR
@@ -336,9 +380,10 @@ void Executeur::executer(list<string>& args)
 */
 }
 
+//Parcours le vector noms et vérifie si le nom existe déjà
 bool Executeur::nomExiste(string leNom)
 {
-		// On vérifie que le nom de la forme que l'on désire insérer n'existe pas déjà dans la map noms
+    // On vérifie que le nom de la forme que l'on désire insérer n'existe pas déjà dans le vector noms
 	bool existe (false);
 	if (!noms.empty())
     {

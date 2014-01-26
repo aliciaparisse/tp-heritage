@@ -25,11 +25,19 @@ struct infoFormes
 	string codeForme;
 };
 
+struct infoUndo
+{
+	string nomFormeUndo;
+	string actionUndo;
+};
+typedef infoUndo infoUndo;
+
 class Modele
 {
 	private:
 		map <string,infoFormes> formes;
-		static int nbFormes;
+		int nbFormes;
+		infoUndo infosUndo;
 
 	public:
 		Modele();
@@ -40,6 +48,8 @@ class Modele
 		string afficherElements (string& nom);
 		int getNbFormes();
 		infoFormes getInfoFormes(string& nom);
+		void modifVectExecuteur(string& nom, int& expediteur);
+		infoUndo getInfoUndo();
 };
 
 #endif

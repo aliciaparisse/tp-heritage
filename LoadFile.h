@@ -1,6 +1,6 @@
 //-----------------------------------
-// TP C++ 3 : TP HÃ©ritage et EntrÃ©es/Sorties
-// RÃ©alisÃ© par : B3222 - Jean MARCHAL et Alicia PARISSE
+// TP C++ 3 : TP Héritage et Entrées/Sorties
+// Réalisé par : B3222 - Jean MARCHAL et Alicia PARISSE
 // LoadFile.h
 //-----------------------------------
 
@@ -14,21 +14,21 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std; 
+using namespace std;
 
 class Controleur;
 
-class LoadFile : public Command 
+class LoadFile : public Command
 {
 	protected:
 	 	Controleur* controleur;
 		string nomFichier;
 
-	public: 
+	public:
 		LoadFile(Controleur* unControleur, string& unNomFichier);
-		~LoadFile(); 
+		~LoadFile();
 		void Do();
-		void Undo(); 
+		void Undo();
 };
 
 

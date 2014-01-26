@@ -7,9 +7,7 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-#include <vector>
 #include <list>
-#include <map>
 #include "Modele.h"
 #include "Forme.h"
 

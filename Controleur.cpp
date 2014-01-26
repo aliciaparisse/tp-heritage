@@ -47,6 +47,7 @@ void Controleur::deplacerLaForme(string& nomFormeDeplacee, int& dx, int& dy)
 	commandeCourante++;
 }
 
+//Le controleur charge le fichier nomFichier et ajoute les formes correspondants aux commandes
 void Controleur::chargerUnFichier(string& nomFichier)
 {
 	LoadFile* load = new LoadFile(this, nomFichier);
@@ -54,6 +55,7 @@ void Controleur::chargerUnFichier(string& nomFichier)
 	commandeCourante++;
 }
 
+//Le Controleur revient sur la dernière commande exécutée et l'annule
 void Controleur::Undo()
 {
 	commandeCourante--;
@@ -62,27 +64,32 @@ void Controleur::Undo()
 
 }
 
+//Le controleur annule le UNDO précédent en exécutant à nouveau la commande
 void Controleur::Redo()
 {
 	(commandes.at(commandeCourante))->Do();
     commandeCourante++;
 }
 
+//Récupère les élements composant une forme à partir de son nom
 string Controleur::afficherElements (string& nom)
 {
     return monModele->afficherElements (nom);
 }
 
+//Récupère le nombre des formes "actives"
 int Controleur::getNbFormes()
 {
 	return monModele->getNbFormes();
 }
 
+//Repère où on se trouve actuellement dans la liste des commandes effectuées
 int Controleur::getCommandeCourante()
 {
     return commandeCourante;
 }
 
+//Vérifie si la commande précédent le REDO était bien un UNDO
 bool Controleur::enableRedo()
 {
     int nbDernierUndo = listCommandUndo.back();
@@ -94,4 +101,9 @@ bool Controleur::enableRedo()
     {
         return false;
     }
+}
+
+infoUndo Controleur::getModifVectExecuteur ()
+{
+    return monModele->getInfoUndo();
 }
